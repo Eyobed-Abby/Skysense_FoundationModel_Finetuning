@@ -17,7 +17,7 @@
 # Updates
 
 - **2025.08.04**: Our latest work, [SkySense++](https://www.nature.com/articles/s42256-025-01078-8), has been accepted by Nature Machine Intelligence. The pretrained weights and code are available at [this repository](https://github.com/kang-wu/SkySensePlusPlus).
-- **2024.06.17**: SkySense has been accepted to CVPR2024. The pretrained weight is available at [this repository](https://www.yuque.com/thinson/research/vpisiuswzbnriwvb?singleDoc=&language=en-us) (access code:bkl3).
+- **2024.06.17**: SkySense has been accepted to CVPR2024. The pretrained weight is available at [this repository](https://www.notion.so/SkySense-Checkpoints-a7fcff6ce29a4647a08c7fe416910509).
 - **2023.12.01**: A collection of papers, datasets, benchmarks, code, and pretrained weights for Remote Sensing Foundation Models (RSFMs) is available [here](https://github.com/Jack-bo1220/Awesome-Remote-Sensing-Foundation-Models).
 
 # Abstract
