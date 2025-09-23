@@ -105,7 +105,7 @@ Note: All results were obtained using NVIDIA A100 GPUs (80GB).
 |  DIOR                      |   mAP50  |   78.73 | [Config](SkySense/detection/configs/swin_transformer_v2/faster_rcnn_swinv2_huge_patch4_window8_fpn-1x_dior.py)       |
 
 # License
-This project and weights is for research purpose only.
+The pre-trained model weights are only available for the non-commercial research. For any commercial use or cooperation, please contact Yansheng Li at Wuhan University (e-mail: yansheng.li@whu.edu.cn).
 
 # Citation
 If you find our repo useful, please consider giving a star and citation:
