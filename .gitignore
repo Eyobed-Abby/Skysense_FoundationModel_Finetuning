@@ -1,0 +1,29 @@
+# --- Model Weights & Large Checkpoints ---
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.weights
+checkpoint/
+work_dirs/
+outputs/
+
+# --- Python Environment ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+
+# --- Datasets (Crucial for remote sensing/histology) ---
+data/
+datasets/
+*.zip
+*.tar.gz
+*.h5py
+
+# --- IDE & System Files ---
+.vscode/
+.idea/
+.DS_Store
+*.log
