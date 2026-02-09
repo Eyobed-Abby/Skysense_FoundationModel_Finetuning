@@ -1,29 +1,38 @@
 import torch
-from models.swin_transformer_v2 import SwinTransformerV2  # Make sure this file is in your PYTHONPATH or same dir
+from models.swin_transformer_v2 import SwinTransformerV2
 
-# === Step 1: Create SwinV2-Huge model ===
+# === Step 1: Initialize model ===
 model = SwinTransformerV2(
     arch='huge',
     img_size=224,
     patch_size=4,
     in_channels=3,
-    drop_path_rate=0.2,   # from SkySense paper
+    drop_path_rate=0.2,
     window_size=8,
-    out_indices=(3,),     # output from last stage
+    out_indices=(3,),
     pad_small_map=False,
-    pretrained_window_sizes=[0, 0, 0, 0]  # disable interpolation
+    pretrained_window_sizes=[0, 0, 0, 0]
 )
 
-# === Step 2: Load Checkpoint ===
-ckpt_path = r"skysense_model_backbone_hr.pth"
-state_dict = torch.load(ckpt_path, map_location="cpu")
+# === Step 2: Load checkpoint ===
+ckpt_path = "skysense_model_backbone_hr.pth"
+checkpoint = torch.load(ckpt_path, map_location="cpu")
+state_dict = checkpoint["model"] if "model" in checkpoint else checkpoint
 
-# If it's wrapped
-if "model" in state_dict:
-    state_dict = state_dict["model"]
+# === Step 3: Load with diagnostics ===
+load_result = model.load_state_dict(state_dict, strict=False)
+missing_keys = load_result.missing_keys
+unexpected_keys = load_result.unexpected_keys
 
-missing, unexpected = model.load_state_dict(state_dict, strict=False)
+# === Step 4: Print summary ===
+print(f"\n✅ Checkpoint loaded")
+print(f"❌ Missing keys: {len(missing_keys)}")
+print(f"⚠️ Unexpected keys: {len(unexpected_keys)}")
 
-print("✅ Checkpoint loaded")
-print(f"Missing keys: {len(missing)}")
-print(f"Unexpected keys: {len(unexpected)}")
+print("\n--- First 10 Missing Keys ---")
+for key in missing_keys[:10]:
+    print("•", key)
+
+print("\n--- All Unexpected Keys ---")
+for key in unexpected_keys:
+    print("•", key)
