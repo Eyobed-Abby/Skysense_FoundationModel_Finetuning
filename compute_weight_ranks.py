@@ -17,7 +17,7 @@ if __name__ == "__main__":
     from skysense_lora_classifier_qkv import build_lora_classifier_qkv
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--ckpt', type=str, required=True, help='Path to SkySense HR checkpoint')
+    parser.add_argument('--ckpt', type=str, required=True, help='Path to SkySense HR checkpoint', default="skysense_model_backbone_hr.pth")
     args = parser.parse_args()
 
     model = build_lora_classifier_qkv(args.ckpt)
