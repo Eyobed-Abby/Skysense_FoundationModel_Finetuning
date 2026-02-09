@@ -9,7 +9,7 @@ def compute_ranks(model: nn.Module):
         if isinstance(module, nn.Linear):
             weight = module.weight.data
             rank = matrix_rank(weight).item()
-            print(f"{name:60} | shape: {tuple(weight.shape):>15} | rank: {rank}")
+            print(f"{name:60} | shape: {str(tuple(weight.shape)):>15} | rank: {rank}")
 
 
 if __name__ == "__main__":
