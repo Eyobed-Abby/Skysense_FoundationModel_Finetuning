@@ -7,7 +7,6 @@ class SkySenseClassifier(nn.Module):
     def __init__(self, backbone: nn.Module, num_classes: int = 45):
         super().__init__()
         self.backbone = backbone
-        self.global_pool = nn.AdaptiveAvgPool1d(1)
         self.classifier = nn.Linear(2816, num_classes)  # SwinV2-Huge final dim
 
     def forward(self, x):
@@ -34,7 +33,7 @@ def load_skysense_backbone(ckpt_path: str) -> nn.Module:
     return model
 
 
-def build_lora_classifier(ckpt_path: str, lora_r: int = 8, lora_alpha: int = 16) -> nn.Module:
+def build_lora_classifier_qkv(ckpt_path: str, lora_r: int = 8, lora_alpha: int = 16) -> nn.Module:
     backbone = load_skysense_backbone(ckpt_path)
     base_model = SkySenseClassifier(backbone)
 
