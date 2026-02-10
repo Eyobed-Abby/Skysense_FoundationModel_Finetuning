@@ -4,6 +4,7 @@
 *.ckpt
 *.h5
 *.weights
+*.jpg
 checkpoint/
 work_dirs/
 outputs/
