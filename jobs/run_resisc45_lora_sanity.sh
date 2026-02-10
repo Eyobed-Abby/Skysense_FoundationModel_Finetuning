@@ -23,7 +23,6 @@ echo
 
 module purge
 module load miniconda/3
-source activate lora_skysense_env
 
 cd /dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning
 
