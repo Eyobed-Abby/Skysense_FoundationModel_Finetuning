@@ -38,8 +38,8 @@ RUN_NAME="sanity_check_${SLURM_JOB_ID}"
 
 srun python train_resisc45_lora.py \
   --ckpt skysense_model_backbone_hr.pth \
-  --epochs 1 \
-  --batch_size 32 \
+  --epochs 100 \
+  --batch_size 64 \
   --train_split 0.1 \
   --save_path jobs/checkpoints/sanity_model.pth \
   --wandb_project "LoRA_resisc45_sanity"
