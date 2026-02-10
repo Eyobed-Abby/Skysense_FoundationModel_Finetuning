@@ -10,11 +10,18 @@ class SkySenseClassifier(nn.Module):
         self.classifier = nn.Linear(2816, num_classes)  # SwinV2-Huge final dim
 
     def forward(self, x):
-        feats = self.backbone(x)  # shape: [B, L, C]
+        feats = self.backbone(x)
         if isinstance(feats, tuple):
-            feats = feats[0]
-        pooled = feats.mean(dim=1)  # global average over tokens
+            feats = feats[0]  # unpack
+        if feats.ndim == 3:
+            # [B, N, C] -> mean over tokens
+            pooled = feats.mean(dim=1)
+        elif feats.ndim == 2:
+            pooled = feats  # already [B, C]
+        else:
+            raise ValueError(f"Unexpected shape: {feats.shape}")
         return self.classifier(pooled)
+
 
 
 def load_skysense_backbone(ckpt_path: str) -> nn.Module:
