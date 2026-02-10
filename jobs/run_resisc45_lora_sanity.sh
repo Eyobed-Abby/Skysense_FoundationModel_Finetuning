@@ -9,7 +9,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
-#SBATCH --time=01:00:00
+#SBATCH --time=36:00:00
 
 #SBATCH --output=jobs/logs/finetune_sanity_%j.out
 #SBATCH --error=jobs/logs/finetune_sanity_%j.err
