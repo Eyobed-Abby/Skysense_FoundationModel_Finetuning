@@ -12,15 +12,16 @@ class SkySenseClassifier(nn.Module):
     def forward(self, x):
         feats = self.backbone(x)
         if isinstance(feats, tuple):
-            feats = feats[0]  # unpack
-        if feats.ndim == 3:
-            # [B, N, C] -> mean over tokens
-            pooled = feats.mean(dim=1)
+            feats = feats[0]
+        if feats.ndim == 4:
+            # [B, C, H, W] -> global avg pool to [B, C]
+            pooled = nn.functional.adaptive_avg_pool2d(feats, 1).squeeze(-1).squeeze(-1)
         elif feats.ndim == 2:
             pooled = feats  # already [B, C]
         else:
             raise ValueError(f"Unexpected shape: {feats.shape}")
         return self.classifier(pooled)
+
 
 
 
