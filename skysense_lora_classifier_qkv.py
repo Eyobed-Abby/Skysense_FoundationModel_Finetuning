@@ -24,7 +24,7 @@ def load_skysense_backbone(ckpt_path: str) -> nn.Module:
         drop_path_rate=0.2,
         window_size=8,
         out_indices=(3,),
-        pad_small_map=False,
+        pad_small_map=True,
         pretrained_window_sizes=[0, 0, 0, 0]
     )
     ckpt = torch.load(ckpt_path, map_location="cpu")
