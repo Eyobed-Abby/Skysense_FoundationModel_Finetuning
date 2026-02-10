@@ -11,6 +11,8 @@ class SkySenseClassifier(nn.Module):
 
     def forward(self, x):
         feats = self.backbone(x)  # shape: [B, L, C]
+        if isinstance(feats, tuple):
+            feats = feats[0]
         pooled = feats.mean(dim=1)  # global average over tokens
         return self.classifier(pooled)
 
