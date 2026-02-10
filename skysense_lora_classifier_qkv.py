@@ -47,5 +47,6 @@ def build_lora_classifier_qkv(ckpt_path: str, lora_r: int = 8, lora_alpha: int =
     )
 
     model = get_peft_model(base_model, lora_config)
+    model.forward = base_model.forward
     model.print_trainable_parameters()
     return model
