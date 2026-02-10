@@ -30,8 +30,11 @@ mkdir -p jobs/logs jobs/checkpoints
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export PYTHONUNBUFFERED=1
+export WANDB_API_KEY="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"
+
 
 RUN_NAME="sanity_check_${SLURM_JOB_ID}"
+
 
 srun python train_resisc45_lora.py \
   --ckpt skysense_model_backbone_hr.pth \
