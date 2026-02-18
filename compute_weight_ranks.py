@@ -1,10 +1,23 @@
-# === file: analysis/compute_weight_ranks.py ===
-
 import torch
 import torch.nn as nn
 from torch.linalg import matrix_rank
 import csv
 import os
+
+def manual_matrix_rank_svd(W, atol=1e-8, rtol=1e-5):
+    """
+    Compute numerical rank using SVD manually.
+    """
+    # Compute singular values
+    s = torch.linalg.svdvals(W)
+
+    # Compute tolerance explicitly
+    tol = atol + rtol * s.max()
+
+    # Count singular values above threshold
+    rank = (s > tol).sum().item()
+
+    return rank, s
 
 def compute_ranks(model: nn.Module, save_path: str):
     print("\nMatrix Rank Report for Linear Layers\n")
@@ -13,7 +26,7 @@ def compute_ranks(model: nn.Module, save_path: str):
     for name, module in model.named_modules():
         if isinstance(module, nn.Linear):
             weight = module.weight.data
-            rank = matrix_rank(weight).item()
+            rank, s = manual_matrix_rank_svd(weight)
             shape = tuple(weight.shape)
 
             # Determine group label
