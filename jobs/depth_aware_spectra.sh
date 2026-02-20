@@ -37,6 +37,7 @@ echo
 
 srun python depth_spectral_analysis.py \
   --ckpt skysense_model_backbone_hr.pth \
+  --csv analysis/weight_spectra_merged.csv
 
 
 echo
