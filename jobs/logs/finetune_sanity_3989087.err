@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 6, in <module>
+    import wandb
+ModuleNotFoundError: No module named 'wandb'
+srun: error: gpu-11-3: task 0: Exited with exit code 1

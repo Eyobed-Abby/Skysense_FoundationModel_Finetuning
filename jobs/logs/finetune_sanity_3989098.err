@@ -1,0 +1,90 @@
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcv/cnn/bricks/transformer.py:32: UserWarning: Fail to import ``MultiScaleDeformableAttention`` from ``mmcv.ops.multi_scale_deform_attn``, You should install ``mmcv-full`` if you need this module. 
+  warnings.warn('Fail to import ``MultiScaleDeformableAttention`` from '
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from WANDB_API_KEY.
+wandb: Currently logged in as: winnerabula55 (winnerabula55-khalifa-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run 8zoafhbc
+wandb: Tracking run with wandb version 0.24.2
+wandb: Run data is saved locally in /dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/wandb/run-20260210_115450-8zoafhbc
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run resilient-lion-2
+wandb: ⭐️ View project at https://wandb.ai/winnerabula55-khalifa-university/LoRA_resisc45_sanity
+wandb: 🚀 View run at https://wandb.ai/winnerabula55-khalifa-university/LoRA_resisc45_sanity/runs/8zoafhbc
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/functional.py:554: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4322.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Train:   0%|          | 0/99 [00:00<?, ?it/s]                                             Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 81, in <module>
+    train_loss, train_acc = train_one_epoch(model, train_loader, optimizer, criterion, device)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 23, in train_one_epoch
+    logits = model(x)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/skysense_lora_classifier_qkv.py", line 13, in forward
+    feats = self.backbone(x)  # shape: [B, L, C]
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 485, in forward
+    x, hw_shape = stage(x, hw_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 222, in forward
+    x = block(x, out_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 125, in forward
+    x = _inner_forward(x)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 108, in _inner_forward
+    x = self.attn(x, hw_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcls/models/utils/attention.py", line 392, in forward
+    assert self.pad_small_map, \
+AssertionError: The input shape (7, 7) is smaller than the window size (8). Please set `pad_small_map=True`, or decrease the `window_size`.
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 81, in <module>
+    train_loss, train_acc = train_one_epoch(model, train_loader, optimizer, criterion, device)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 23, in train_one_epoch
+    logits = model(x)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/skysense_lora_classifier_qkv.py", line 13, in forward
+    feats = self.backbone(x)  # shape: [B, L, C]
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 485, in forward
+    x, hw_shape = stage(x, hw_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 222, in forward
+    x = block(x, out_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 125, in forward
+    x = _inner_forward(x)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 108, in _inner_forward
+    x = self.attn(x, hw_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcls/models/utils/attention.py", line 392, in forward
+    assert self.pad_small_map, \
+AssertionError: The input shape (7, 7) is smaller than the window size (8). Please set `pad_small_map=True`, or decrease the `window_size`.
+srun: error: gpu-11-3: task 0: Exited with exit code 1
