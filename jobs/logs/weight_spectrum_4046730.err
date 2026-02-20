@@ -1,0 +1,5 @@
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcv/cnn/bricks/transformer.py:32: UserWarning: Fail to import ``MultiScaleDeformableAttention`` from ``mmcv.ops.multi_scale_deform_attn``, You should install ``mmcv-full`` if you need this module. 
+  warnings.warn('Fail to import ``MultiScaleDeformableAttention`` from '
+usage: compute_update_weight.py [-h] --ckpt CKPT [--out OUT]
+compute_update_weight.py: error: the following arguments are required: --ckpt
+srun: error: gpu-10-1: task 0: Exited with exit code 2

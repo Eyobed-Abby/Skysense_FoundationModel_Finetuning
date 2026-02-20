@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/compute_update_weight.py", line 78, in <module>
+    df = compute_weight_spectrum(model)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/compute_update_weight.py", line 13, in compute_weight_spectrum
+    for name, param in model.named_parameters():
+AttributeError: 'collections.OrderedDict' object has no attribute 'named_parameters'
+srun: error: gpu-10-1: task 0: Exited with exit code 1
