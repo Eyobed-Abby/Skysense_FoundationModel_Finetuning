@@ -34,7 +34,10 @@ export PYTHONUNBUFFERED=1
 echo "Running weight spectral analysis..."
 echo
 
-srun python compute_update_weight.py
+
+srun python compute_update_weight.py \
+  --ckpt skysense_model_backbone_hr.pth \
+
 
 echo
 echo "Finish time: $(date)"
