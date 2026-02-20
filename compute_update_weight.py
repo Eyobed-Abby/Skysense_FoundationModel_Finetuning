@@ -1,81 +1,238 @@
+import os
+import csv
+import argparse
+
 import torch
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
+import torch.nn as nn
 
-def compute_weight_spectrum(
-    model,
-    topk_list=[1, 2, 4, 8, 16, 32, 64],
-    thresholds=[0.3, 0.5, 0.7, 0.9]
+
+def is_lora_module(name: str, module: nn.Module) -> bool:
+    """
+    Heuristic to skip LoRA layers:
+    - Any module whose name contains 'lora'
+    - Any module whose class name contains 'lora'
+    """
+    lname = name.lower()
+    if "lora" in lname:
+        return True
+    clsname = module.__class__.__name__.lower()
+    if "lora" in clsname:
+        return True
+    return False
+
+
+def get_group_from_name(name: str) -> str:
+    """
+    Rough grouping of layers based on their names, like script B.
+    """
+    lname = name.lower()
+    if "qkv" in lname:
+        return "qkv"
+    if "ffn" in lname or "feedforward" in lname:
+        return "ffn"
+    if "proj" in lname or "projection" in lname:
+        return "proj"
+    return "other"
+
+
+def analyze_weight_matrix(
+    W: torch.Tensor,
+    thresholds=(0.3, 0.5, 0.7, 0.9, 0.95),
+    topk_list=(4, 8, 16, 32, 64),
+    rank_eps=1e-6,
 ):
-    results = []
+    """
+    Given a weight matrix W, compute:
+      - full_rank (numerical rank)
+      - stable_rank
+      - frob_norm, spectral_norm
+      - dim_X: minimal k s.t. sum_{i<=k} λ_i / sum_j λ_j >= X
+      - dim_X_frac: dim_X / full_rank
+      - topk_energy: energy captured by top-k eigenvalues
 
-    for name, param in model.named_parameters():
-        if param.ndim == 2:  # Only linear layers
-            W = param.detach().cpu()
+    Here λ_i = σ_i^2 are eigenvalues of W^T W.
+    """
+    # Ensure 2D
+    W = W.detach().float().cpu()
+    if W.ndim != 2:
+        W = W.view(W.size(0), -1)
 
-            # SVD
-            # S: singular values σ_i (sorted descending)
-            U, S, Vh = torch.linalg.svd(W, full_matrices=False)
+    # SVD (singular values σ_i)
+    # Use full_matrices=False to keep it efficient.
+    U, S, Vh = torch.linalg.svd(W, full_matrices=False)
 
-            # Eigenvalues of W^T W are λ_i = σ_i^2
-            S_squared = S**2
-            total_energy = S_squared.sum()
+    # Guard against weird degenerate case
+    if S.numel() == 0:
+        return None
 
-            # Avoid division by zero in case of a weird all-zero layer
-            if total_energy == 0:
-                # Fill with NaNs or zeros as you prefer
-                layer_info = {
-                    "layer": name,
-                    "rank": len(S),
-                    "total_energy": 0.0,
-                }
-                for k in topk_list:
-                    if k <= len(S):
-                        layer_info[f"top{k}_energy"] = 0.0
-                for t in thresholds:
-                    perc = int(t * 100)
-                    layer_info[f"dim_{perc}"] = 0
-                results.append(layer_info)
-                continue
+    # Sort singular values descending (should already be, but just to be safe)
+    S = torch.sort(S, descending=True).values
 
-            # Cumulative eigenvalue ratio (explained variance)
-            cumulative_energy = torch.cumsum(S_squared, dim=0) / total_energy
+    # Eigenvalues of W^T W
+    eigenvals = S ** 2
+    total_eig_sum = eigenvals.sum().item()
 
-            layer_info = {
-                "layer": name,
-                "rank": len(S),
-                "total_energy": total_energy.item()
-            }
+    if total_eig_sum <= 0:
+        # All zeros – skip
+        return None
 
-            # 1) Existing: for fixed k, what fraction of eigenvalue energy?
-            for k in topk_list:
-                if k <= len(S):
-                    energy_k = S_squared[:k].sum() / total_energy
-                    layer_info[f"top{k}_energy"] = energy_k.item()
+    # Numerical full rank: how many singular values are "non-zero"
+    full_rank = int((S > rank_eps).sum().item())
+    if full_rank == 0:
+        return None
 
-            # 2) New: for fixed energy thresholds, what k do we need?
-            #    Smallest k such that cumulative_energy[k-1] >= threshold
-            for t in thresholds:
-                perc = int(t * 100)  # e.g. 0.3 -> 30
-                idx = (cumulative_energy >= t).nonzero(as_tuple=True)[0]
-                if idx.numel() == 0:
-                    k_needed = len(S)
-                else:
-                    k_needed = int(idx[0].item()) + 1  # +1 for 1-based k
+    # Normalized eigenvalue ratios and cumulative energy
+    eig_ratios = eigenvals / eigenvals.sum()
+    cumulative_energy = torch.cumsum(eig_ratios, dim=0)
 
-                layer_info[f"dim_{perc}"] = k_needed
+    # Stable rank = ||W||_F^2 / ||W||_2^2
+    frob_sq = eigenvals.sum().item()
+    spectral_sq = float(S[0].item() ** 2)
+    stable_rank = frob_sq / (spectral_sq + 1e-12)
 
-            results.append(layer_info)
+    metrics = {
+        "full_rank": full_rank,
+        "stable_rank": float(stable_rank),
+        "frob_norm": float(frob_sq ** 0.5),
+        "spectral_norm": float(S[0].item()),
+    }
 
-    return pd.DataFrame(results)
+    # For each threshold: minimal k s.t. cumulative_energy[k-1] >= threshold
+    for thr in thresholds:
+        perc = int(thr * 100)
+        idx = (cumulative_energy >= thr).nonzero(as_tuple=True)[0]
+        if idx.numel() == 0:
+            k = full_rank
+        else:
+            k = int(idx[0].item()) + 1  # +1 because k is 1-based
+
+        metrics[f"dim_{perc}"] = k
+        metrics[f"dim_{perc}_frac"] = float(k / full_rank)
+
+    # topk_energy: fraction of total eigenvalue mass explained by top-k
+    for k in topk_list:
+        if k <= eigenvals.numel():
+            metrics[f"top{k}_energy"] = float(cumulative_energy[k - 1].item())
+        else:
+            metrics[f"top{k}_energy"] = float("nan")
+
+    return metrics
+
+
+def compute_weight_spectra(
+    model: nn.Module,
+    save_path: str,
+    thresholds=(0.3, 0.5, 0.7, 0.9, 0.95),
+    topk_list=(4, 8, 16, 32, 64),
+    rank_eps=1e-6,
+    min_rank_keep=10,
+):
+    """
+    Iterate over nn.Linear layers in the model, skip LoRA layers and
+    low-rank layers, compute spectral stats, and save to CSV.
+    """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+    header = [
+        "layer",
+        "group",
+        "shape",
+        "full_rank",
+        "stable_rank",
+        "frob_norm",
+        "spectral_norm",
+    ]
+
+    # Dim columns (k needed)
+    for thr in thresholds:
+        perc = int(thr * 100)
+        header.append(f"dim_{perc}")       # number of eigenvalues (directions)
+        header.append(f"dim_{perc}_frac")  # percentage of eigenvalues
+
+    # Top-k energy columns
+    for k in topk_list:
+        header.append(f"top{k}_energy")
+
+    rows = []
+
+    for name, module in model.named_modules():
+        # Only consider Linear layers
+        if not isinstance(module, nn.Linear):
+            continue
+
+        # Skip LoRA layers
+        if is_lora_module(name, module):
+            continue
+
+        weight = module.weight.data
+        shape = tuple(weight.shape)
+
+        metrics = analyze_weight_matrix(
+            weight,
+            thresholds=thresholds,
+            topk_list=topk_list,
+            rank_eps=rank_eps,
+        )
+
+        if metrics is None:
+            continue
+
+        # Skip layers whose numerical rank is below threshold
+        if metrics["full_rank"] < min_rank_keep:
+            continue
+
+        group = get_group_from_name(name)
+
+        row = [
+            name,
+            group,
+            f"{shape[0]}x{shape[1]}",
+            metrics["full_rank"],
+            metrics["stable_rank"],
+            metrics["frob_norm"],
+            metrics["spectral_norm"],
+        ]
+
+        for thr in thresholds:
+            perc = int(thr * 100)
+            row.append(metrics[f"dim_{perc}"])
+            row.append(metrics[f"dim_{perc}_frac"])
+
+        for k in topk_list:
+            row.append(metrics[f"top{k}_energy"])
+
+        rows.append(row)
+
+    # Write CSV
+    with open(save_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(rows)
+
+    print(f"[INFO] Saved spectral stats for {len(rows)} layers to: {save_path}")
 
 
 if __name__ == "__main__":
-    checkpoint_path = "skysense_model_backbone_hr.pth"
-    model = torch.load(checkpoint_path, map_location="cpu")
+    # IMPORTANT: adjust this import to match your repo structure
+    from skysense_lora_classifier_qkv import build_lora_classifier_qkv
 
-    df = compute_weight_spectrum(model)
-    df.to_csv("analysis/weight_spectra_analysis.csv", index=False)
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--ckpt",
+        type=str,
+        required=True,
+        default="skysense_model_backbone_hr.pth",
+        help="Path to SkySense HR checkpoint",
+    )
+    parser.add_argument(
+        "--out",
+        type=str,
+        default="analysis/weight_spectra_merged.csv",
+        help="Output CSV path",
+    )
+    args = parser.parse_args()
 
-    print(df.head())
+    # Build full model (nn.Module) from checkpoint
+    model = build_lora_classifier_qkv(args.ckpt)
+
+    compute_weight_spectra(model, args.out)
