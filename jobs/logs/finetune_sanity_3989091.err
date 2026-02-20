@@ -1,0 +1,31 @@
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcv/cnn/bricks/transformer.py:32: UserWarning: Fail to import ``MultiScaleDeformableAttention`` from ``mmcv.ops.multi_scale_deform_attn``, You should install ``mmcv-full`` if you need this module. 
+  warnings.warn('Fail to import ``MultiScaleDeformableAttention`` from '
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/kunet.ae/100066896/.netrc.
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+wandb: setting up run 07ec2k0w
+wandb: ERROR Error uploading run: returned error 401: {"data":{"upsertBucket":null},"errors":[{"message":"user is not logged in","path":["upsertBucket"],"extensions":{"code":"PERMISSION_ERROR"}}]}
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 65, in <module>
+    wandb.init(project=args.wandb_project, config=vars(args))
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1595, in init
+    get_sentry().reraise(e)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/analytics/sentry.py", line 190, in reraise
+    raise exc.with_traceback(tb)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1578, in init
+    run = wi.init(run_settings, run_config, run_printer)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1031, in init
+    raise error
+wandb.errors.errors.CommError: Error uploading run: returned error 401: {"data":{"upsertBucket":null},"errors":[{"message":"user is not logged in","path":["upsertBucket"],"extensions":{"code":"PERMISSION_ERROR"}}]}
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/train_resisc45_lora.py", line 65, in <module>
+    wandb.init(project=args.wandb_project, config=vars(args))
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1595, in init
+    get_sentry().reraise(e)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/analytics/sentry.py", line 190, in reraise
+    raise exc.with_traceback(tb)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1578, in init
+    run = wi.init(run_settings, run_config, run_printer)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1031, in init
+    raise error
+wandb.errors.errors.CommError: Error uploading run: returned error 401: {"data":{"upsertBucket":null},"errors":[{"message":"user is not logged in","path":["upsertBucket"],"extensions":{"code":"PERMISSION_ERROR"}}]}
+srun: error: gpu-11-3: task 0: Exited with exit code 1
