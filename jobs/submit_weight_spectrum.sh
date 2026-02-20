@@ -2,7 +2,9 @@
 #SBATCH --job-name=skysense_weight_spectrum
 #SBATCH --account=kuin0137
 
-#SBATCH --partition=compute
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
