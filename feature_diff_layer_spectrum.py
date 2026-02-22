@@ -212,7 +212,18 @@ def main():
     # --- Build LoRA classifier and load fine-tuned weights ---
     tuned_model = build_lora_classifier_qkv(args.base_ckpt).to(device)
     state = torch.load(args.tuned_ckpt, map_location=device)
-    tuned_model.load_state_dict(state)
+
+    missing, unexpected = tuned_model.load_state_dict(state, strict=False)
+    print("[INFO] Loaded tuned checkpoint with strict=False")
+    if missing:
+        print("[INFO] Missing keys (ignored):")
+        for k in missing:
+            print("  ", k)
+    if unexpected:
+        print("[INFO] Unexpected keys (ignored):")
+        for k in unexpected:
+            print("  ", k)
+
     tuned_model.eval()
 
     # --- Register hooks ---
