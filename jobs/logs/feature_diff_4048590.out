@@ -1,0 +1,29 @@
+=======================================
+ SKY SENSE LAYER-WISE FEATURE DIFF SPECTRUM
+=======================================
+Host: gpu-10-2
+Start time: Sun Feb 22 13:20:41 +04 2026
+
+Running feature difference layer-wise spectral analysis...
+
+[INFO] Using device: cuda
+[INFO] Building base model...
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Building tuned model and loading checkpoint...
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Loaded tuned checkpoint with strict=False
+[INFO] Missing keys (ignored): 48
+[INFO] Unexpected keys (ignored): 0
+[INFO] Registering hooks on base model...
+[INFO] Registering hooks on tuned model...
+[INFO] Base hooked layers:  0 (will fill during forward)
+[INFO] Tuned hooked layers: 0 (will fill during forward)
+[INFO] Collecting activations from 10 batches...
+[INFO] Finished collecting activations. Computing layer-wise spectra...
+[INFO] Common hooked layers with activations: 195
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.attn.w_msa.proj, skipping.
+
+Finish time: Sun Feb 22 13:21:52 +04 2026
+=======================================

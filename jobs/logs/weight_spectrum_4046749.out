@@ -1,0 +1,17 @@
+=======================================
+   SKY SENSE WEIGHT SPECTRUM ANALYSIS
+=======================================
+Host: gpu-11-2
+Start time: Sat Feb 21 13:06:07 +04 2026
+
+Running depth aware weight spectral analysis...
+
+[INFO] Saved analysis/depth_vs_dim90_frac.png
+[INFO] Saved analysis/depth_vs_stable_rank_ratio.png
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Saved analysis/cumulative_energy_qkv.png
+[INFO] Saved analysis/cumulative_energy_ffn.png
+[INFO] Saved analysis/cumulative_energy_proj.png
+
+Finish time: Sat Feb 21 13:06:50 +04 2026
+=======================================

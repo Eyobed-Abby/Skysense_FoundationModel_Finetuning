@@ -1,0 +1,67 @@
+=======================================
+ SKY SENSE LAYER-WISE FEATURE DIFF SPECTRUM
+=======================================
+Host: gpu-10-2
+Start time: Sun Feb 22 12:50:11 +04 2026
+
+Running feature difference layer-wise spectral analysis...
+
+[INFO] Using device: cuda
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Loaded tuned checkpoint with strict=False
+[INFO] Missing keys (ignored):
+   base_model.model.backbone.stages.0.blocks.0.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.0.blocks.0.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.0.blocks.1.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.0.blocks.1.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.1.blocks.0.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.1.blocks.0.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.1.blocks.1.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.1.blocks.1.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.0.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.0.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.1.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.1.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.2.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.2.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.3.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.3.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.4.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.4.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.5.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.5.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.6.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.6.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.7.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.7.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.8.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.8.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.9.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.9.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.10.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.10.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.11.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.11.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.12.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.12.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.13.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.13.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.14.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.14.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.15.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.15.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.16.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.16.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.2.blocks.17.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.2.blocks.17.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.3.blocks.0.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.3.blocks.0.attn.w_msa.relative_position_index
+   base_model.model.backbone.stages.3.blocks.1.attn.w_msa.relative_coords_table
+   base_model.model.backbone.stages.3.blocks.1.attn.w_msa.relative_position_index
+[INFO] Registering hooks on base model...
+[INFO] Registering hooks on tuned model...
+[INFO] Collecting activations from 10 batches...
+[INFO] Finished collecting activations. Computing layer-wise spectra...
+
+Finish time: Sun Feb 22 12:51:21 +04 2026
+=======================================

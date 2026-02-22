@@ -1,0 +1,13 @@
+=======================================
+   SKY SENSE FEATURE SPECTRUM ANALYSIS
+=======================================
+Host: gpu-11-3
+Start time: Sat Feb 21 13:06:46 +04 2026
+
+Running feature spectral analysis...
+
+[INFO] Using device: cuda
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+
+Finish time: Sat Feb 21 13:07:19 +04 2026
+=======================================

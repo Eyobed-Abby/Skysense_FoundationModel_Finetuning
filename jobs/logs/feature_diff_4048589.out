@@ -1,0 +1,20 @@
+=======================================
+ SKY SENSE LAYER-WISE FEATURE DIFF SPECTRUM
+=======================================
+Host: gpu-10-2
+Start time: Sun Feb 22 13:14:03 +04 2026
+
+Running feature difference layer-wise spectral analysis...
+
+[INFO] Using device: cuda
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Loaded tuned checkpoint with strict=False
+[INFO] Missing keys (ignored): 48
+[INFO] Registering hooks on base model...
+[INFO] Registering hooks on tuned model (strip 'base_model.' prefix)...
+[INFO] Collecting activations from 10 batches...
+[INFO] Finished collecting activations. Computing layer-wise spectra...
+[INFO] Common hooked layers: 0
+
+Finish time: Sun Feb 22 13:15:13 +04 2026
+=======================================
