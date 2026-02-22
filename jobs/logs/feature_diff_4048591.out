@@ -1,0 +1,87 @@
+=======================================
+ SKY SENSE LAYER-WISE FEATURE DIFF SPECTRUM
+=======================================
+Host: gpu-10-2
+Start time: Sun Feb 22 14:03:39 +04 2026
+
+Running feature difference layer-wise spectral analysis...
+
+[INFO] Using device: cuda
+[INFO] Building base model...
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Building tuned model and loading checkpoint...
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+[INFO] Loaded tuned checkpoint with strict=False
+[INFO] Missing keys (ignored): 48
+[INFO] Unexpected keys (ignored): 0
+[INFO] Registering hooks on base model...
+[INFO] Registering hooks on tuned model...
+[INFO] Base hooked layers:  0 (will fill during forward)
+[INFO] Tuned hooked layers: 0 (will fill during forward)
+[INFO] Collecting activations from 10 batches...
+[INFO] Finished collecting activations. Computing layer-wise spectra...
+[INFO] Common hooked layers with activations: 195
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.attn.w_msa.proj, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.0.ffn.layers.0.0.base_layer, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.1.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.0.blocks.1.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.1.blocks.0.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.1.blocks.0.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.1.blocks.1.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.1.blocks.1.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.0.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.0.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.1.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.1.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.10.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.10.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.11.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.11.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.12.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.12.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.13.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.13.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.14.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.14.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.15.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.15.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.16.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.16.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.17.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.17.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.2.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.2.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.3.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.3.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.4.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.4.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.5.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.5.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.6.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.6.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.7.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.7.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.8.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.8.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.9.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.2.blocks.9.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.3.blocks.0.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.3.blocks.0.attn.w_msa.cpb_mlp.2, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.3.blocks.1.attn.w_msa.cpb_mlp.0, skipping.
+[WARN] Degenerate spectrum for layer base_model.model.backbone.stages.3.blocks.1.attn.w_msa.cpb_mlp.2, skipping.
+[INFO] Saved layer-wise feature-diff spectrum to analysis/feature_diff_layer_spectrum.csv
+
+==== SAMPLE OF RESULTS ====
+                                               layer  ...  top64_energy
+0  base_model.model.backbone.stages.0.blocks.0.ff...  ...           NaN
+1  base_model.model.backbone.stages.0.blocks.0.ff...  ...           NaN
+2  base_model.model.backbone.stages.0.blocks.0.ff...  ...           NaN
+3  base_model.model.backbone.stages.0.blocks.0.ff...  ...           NaN
+4  base_model.model.backbone.stages.0.blocks.1.at...  ...           NaN
+
+[5 rows x 22 columns]
+
+Finish time: Sun Feb 22 14:04:50 +04 2026
+=======================================
