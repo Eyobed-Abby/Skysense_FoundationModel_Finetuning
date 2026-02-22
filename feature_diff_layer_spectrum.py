@@ -7,11 +7,7 @@ import numpy as np
 import pandas as pd
 
 from resisc45_loader import get_resisc45_dataloaders
-from skysense_lora_classifier_qkv import (
-    SkySenseClassifier,
-    load_skysense_backbone,
-    build_lora_classifier_qkv,
-)
+from skysense_lora_classifier_qkv import build_lora_classifier_qkv
 
 
 # ---------- Spectrum utils ----------
@@ -83,16 +79,18 @@ def layer_filter(name: str, module: nn.Module) -> bool:
 
     For feature-diff we:
       - only look at backbone layers
-      - require a 2D weight (linear-like)
-      - DO NOT skip LoRA modules
+      - require 2D weight (linear-style)
+      - do NOT try to skip LoRA modules;
+        we care about their outputs too.
     """
     if "backbone" not in name:
         return False
 
-    # Prefer Linear subclasses, but fall back to "has 2D weight"
+    # Prefer nn.Linear
     if isinstance(module, nn.Linear):
         return True
 
+    # Fallback: any module with a 2D weight
     if hasattr(module, "weight"):
         w = module.weight
         if isinstance(w, torch.Tensor) and w.ndim == 2:
@@ -101,29 +99,18 @@ def layer_filter(name: str, module: nn.Module) -> bool:
     return False
 
 
-def register_hooks(model: nn.Module, name_prefix_to_strip: str = ""):
+def register_hooks(model: nn.Module):
     """
     Register forward hooks on selected layers.
 
-    name_prefix_to_strip: if not empty, remove this prefix from
-    module names when storing activations (used to align tuned model
-    names like 'base_model.backbone....' with base model 'backbone....').
-
     Returns:
-      activations: dict normalized_name -> list of [B, C] tensors
+      activations: dict name -> list of [B, C] tensors
       handles: list of hook handles
     """
     activations = {}
     handles = []
 
-    def normalize_name(name: str) -> str:
-        if name_prefix_to_strip and name.startswith(name_prefix_to_strip):
-            return name[len(name_prefix_to_strip):]
-        return name
-
     def make_hook(name):
-        norm_name = normalize_name(name)
-
         def hook(module, input, output):
             out = output
             if isinstance(out, tuple):
@@ -134,8 +121,7 @@ def register_hooks(model: nn.Module, name_prefix_to_strip: str = ""):
             elif out.ndim == 1:
                 out = out.unsqueeze(0)  # [1, C]
             out = out.detach().cpu()
-            activations.setdefault(norm_name, []).append(out)
-
+            activations.setdefault(name, []).append(out)
         return hook
 
     for name, module in model.named_modules():
@@ -193,33 +179,32 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[INFO] Using device: {device}")
 
-    # --- Base model (no LoRA) ---
-    backbone_base = load_skysense_backbone(args.base_ckpt)
-    base_model = SkySenseClassifier(backbone_base).to(device)
+    # --- Base model (pre-finetune) ---
+    print("[INFO] Building base model...")
+    base_model = build_lora_classifier_qkv(args.base_ckpt).to(device)
     base_model.eval()
 
-    # --- LoRA model ---
+    # --- Tuned model (post-finetune) ---
+    print("[INFO] Building tuned model and loading checkpoint...")
     tuned_model = build_lora_classifier_qkv(args.base_ckpt).to(device)
     state = torch.load(args.tuned_ckpt, map_location=device)
 
     missing, unexpected = tuned_model.load_state_dict(state, strict=False)
     print("[INFO] Loaded tuned checkpoint with strict=False")
-    if missing:
-        print("[INFO] Missing keys (ignored):", len(missing))
-    if unexpected:
-        print("[INFO] Unexpected keys (ignored):", len(unexpected))
+    print(f"[INFO] Missing keys (ignored): {len(missing)}")
+    print(f"[INFO] Unexpected keys (ignored): {len(unexpected)}")
 
     tuned_model.eval()
 
     # --- Register hooks ---
     print("[INFO] Registering hooks on base model...")
-    base_acts, base_handles = register_hooks(base_model, name_prefix_to_strip="")
+    base_acts, base_handles = register_hooks(base_model)
 
-    print("[INFO] Registering hooks on tuned model (strip 'base_model.' prefix)...")
-    tuned_acts, tuned_handles = register_hooks(
-        tuned_model,
-        name_prefix_to_strip="base_model."
-    )
+    print("[INFO] Registering hooks on tuned model...")
+    tuned_acts, tuned_handles = register_hooks(tuned_model)
+
+    print(f"[INFO] Base hooked layers:  {len(base_acts)} (will fill during forward)")
+    print(f"[INFO] Tuned hooked layers: {len(tuned_acts)} (will fill during forward)")
 
     # --- Data loader ---
     train_loader, _ = get_resisc45_dataloaders(
@@ -244,7 +229,7 @@ def main():
 
     rows = []
     layer_names = sorted(set(base_acts.keys()).intersection(set(tuned_acts.keys())))
-    print(f"[INFO] Common hooked layers: {len(layer_names)}")
+    print(f"[INFO] Common hooked layers with activations: {len(layer_names)}")
 
     for name in layer_names:
         A_base_list = base_acts[name]
@@ -274,7 +259,7 @@ def main():
         rows.append(metrics)
 
     if not rows:
-        raise RuntimeError("No valid layers analyzed. Check layer_filter / hooks (after fixes).")
+        raise RuntimeError("No valid layers analyzed. Check layer_filter / hooks (after latest fixes).")
 
     df = pd.DataFrame(rows)
     cols = ["layer", "num_samples", "feat_dim",
