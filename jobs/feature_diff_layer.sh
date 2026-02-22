@@ -36,13 +36,13 @@ export PYTHONUNBUFFERED=1
 echo "Running feature difference layer-wise spectral analysis..."
 echo
 
-srun python feature_diff_layer_spectrum.py \
+srun python feature_diff_block_analysis.py \
   --base_ckpt skysense_model_backbone_hr.pth \
   --tuned_ckpt jobs/checkpoints/sanity_model.pth \
   --train_split 0.1 \
   --batch_size 64 \
   --num_batches 10 \
-  --out analysis/feature_diff_layer_spectrum.csv
+  --out analysis/feature_diff_block_analysis.csv
 
 echo
 echo "Finish time: $(date)"
