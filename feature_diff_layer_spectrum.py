@@ -115,11 +115,18 @@ def register_hooks(model: nn.Module):
             out = output
             if isinstance(out, tuple):
                 out = out[0]
+
             if out.ndim > 2:
+                # [B, C, H, W] -> [B, C]
                 out = nn.functional.adaptive_avg_pool2d(out, 1)
-                out = out.squeeze(-1).squeeze(-1)  # [B, C]
+                out = out.squeeze(-1).squeeze(-1)
             elif out.ndim == 1:
-                out = out.unsqueeze(0)  # [1, C]
+                # [C] -> [1, C]
+                out = out.unsqueeze(0)
+            elif out.ndim == 0:
+                # scalar -> [1, 1]
+                out = out.view(1, 1)
+
             out = out.detach().cpu()
             activations.setdefault(name, []).append(out)
         return hook
@@ -254,7 +261,11 @@ def main():
 
         metrics["layer"] = name
         metrics["num_samples"] = int(D.shape[0])
-        metrics["feat_dim"] = int(D.shape[1])
+        if D.ndim == 1:
+            feat_dim = 1
+        else:
+            feat_dim = int(D.shape[1])
+        metrics["feat_dim"] = feat_dim
 
         rows.append(metrics)
 
