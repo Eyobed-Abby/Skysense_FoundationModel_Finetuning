@@ -84,6 +84,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--base_ckpt", required=True)
     parser.add_argument("--tuned_ckpt", required=True)
+    parser.add_argument("--train_split", type=float, default=0.1)
     parser.add_argument("--batch_size", type=int, default=64)
     parser.add_argument("--num_batches", type=int, default=20)
     parser.add_argument("--seed", type=int, default=42)
@@ -126,7 +127,7 @@ def main():
         if pattern.search(name):
             module.register_forward_hook(hook_fn(name, activations_post))
 
-    loader, _ = get_resisc45_dataloaders(batch_size=args.batch_size)
+    loader, _ = get_resisc45_dataloaders(batch_size=args.batch_size, train_split=args.train_split)
 
     with torch.no_grad():
         for i, (x, y) in enumerate(loader):
