@@ -1,0 +1,9 @@
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcv/cnn/bricks/transformer.py:32: UserWarning: Fail to import ``MultiScaleDeformableAttention`` from ``mmcv.ops.multi_scale_deform_attn``, You should install ``mmcv-full`` if you need this module. 
+  warnings.warn('Fail to import ``MultiScaleDeformableAttention`` from '
+usage: feature_diff_advanced_analysis.py [-h] --base_ckpt BASE_CKPT
+                                         --tuned_ckpt TUNED_CKPT
+                                         [--batch_size BATCH_SIZE]
+                                         [--num_batches NUM_BATCHES]
+                                         [--seed SEED] [--out OUT]
+feature_diff_advanced_analysis.py: error: unrecognized arguments: --train_split 0.1
+srun: error: gpu-11-2: task 0: Exited with exit code 2
