@@ -38,7 +38,7 @@ echo
 
 srun python feature_diff_advanced_analysis.py \
   --base_ckpt skysense_model_backbone_hr.pth \
-  --tuned_ckpt jobs/checkpoints/sanity_model2.pth \
+  --tuned_ckpt jobs/checkpoints/sanity_model.pth \
   --train_split 0.1 \
   --batch_size 64 \
   --num_batches 20 \
