@@ -1,0 +1,14 @@
+=======================================
+ SKY SENSE FULL FEATURE-DIFF ANALYSIS WITH INTRINSIC DIMENSION
+=======================================
+Host: gpu-10-4
+Start time: Thu Feb 26 14:56:52 +04 2026
+
+Running full feature-diff intrinsic-dimension analysis...
+
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+trainable params: 2,382,336 || all params: 657,583,805 || trainable%: 0.3623
+Saved: analysis/full_feature_diff3.csv
+
+Finish time: Thu Feb 26 14:58:47 +04 2026
+=======================================
