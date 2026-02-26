@@ -1,0 +1,17 @@
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcv/cnn/bricks/transformer.py:32: UserWarning: Fail to import ``MultiScaleDeformableAttention`` from ``mmcv.ops.multi_scale_deform_attn``, You should install ``mmcv-full`` if you need this module. 
+  warnings.warn('Fail to import ``MultiScaleDeformableAttention`` from '
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/functional.py:554: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4322.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/feature_diff_advanced_analysis.py", line 180, in <module>
+    main()
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/feature_diff_advanced_analysis.py", line 100, in main
+    tuned_model.load_state_dict(torch.load(args.tuned_ckpt, map_location=device), strict=False)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/serialization.py", line 1484, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/serialization.py", line 759, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/serialization.py", line 740, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'jobs/checkpoints/sanity_model2.pth'
+srun: error: gpu-10-4: task 0: Exited with exit code 1
