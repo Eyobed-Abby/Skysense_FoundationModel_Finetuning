@@ -37,7 +37,7 @@ echo "Running full feature-diff intrinsic-dimension analysis..."
 echo
 
 srun python export_skysense_layers_to_csv.py \
-  --base_ckpt skysense_model_backbone_hr.pth \
+  --ckpt skysense_model_backbone_hr.pth \
   --out_modules analysis/backbone_modules.csv \
   --out_params analysis/backbone_params.csv
 
