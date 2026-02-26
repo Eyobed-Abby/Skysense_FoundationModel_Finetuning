@@ -1,0 +1,430 @@
+full_param_name,module_name,param_name,shape,numel,requires_grad
+patch_embed.projection.weight,patch_embed.projection,weight,"(352, 3, 4, 4)",16896,True
+patch_embed.projection.bias,patch_embed.projection,bias,"(352,)",352,True
+patch_embed.norm.weight,patch_embed.norm,weight,"(352,)",352,True
+patch_embed.norm.bias,patch_embed.norm,bias,"(352,)",352,True
+stages.0.blocks.0.attn.w_msa.logit_scale,stages.0.blocks.0.attn.w_msa,logit_scale,"(8, 1, 1)",8,True
+stages.0.blocks.0.attn.w_msa.q_bias,stages.0.blocks.0.attn.w_msa,q_bias,"(352,)",352,True
+stages.0.blocks.0.attn.w_msa.v_bias,stages.0.blocks.0.attn.w_msa,v_bias,"(352,)",352,True
+stages.0.blocks.0.attn.w_msa.cpb_mlp.0.weight,stages.0.blocks.0.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.0.blocks.0.attn.w_msa.cpb_mlp.0.bias,stages.0.blocks.0.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.0.blocks.0.attn.w_msa.cpb_mlp.2.weight,stages.0.blocks.0.attn.w_msa.cpb_mlp.2,weight,"(8, 512)",4096,True
+stages.0.blocks.0.attn.w_msa.qkv.weight,stages.0.blocks.0.attn.w_msa.qkv,weight,"(1056, 352)",371712,True
+stages.0.blocks.0.attn.w_msa.proj.weight,stages.0.blocks.0.attn.w_msa.proj,weight,"(352, 352)",123904,True
+stages.0.blocks.0.attn.w_msa.proj.bias,stages.0.blocks.0.attn.w_msa.proj,bias,"(352,)",352,True
+stages.0.blocks.0.norm1.weight,stages.0.blocks.0.norm1,weight,"(352,)",352,True
+stages.0.blocks.0.norm1.bias,stages.0.blocks.0.norm1,bias,"(352,)",352,True
+stages.0.blocks.0.ffn.layers.0.0.weight,stages.0.blocks.0.ffn.layers.0.0,weight,"(1408, 352)",495616,True
+stages.0.blocks.0.ffn.layers.0.0.bias,stages.0.blocks.0.ffn.layers.0.0,bias,"(1408,)",1408,True
+stages.0.blocks.0.ffn.layers.1.weight,stages.0.blocks.0.ffn.layers.1,weight,"(352, 1408)",495616,True
+stages.0.blocks.0.ffn.layers.1.bias,stages.0.blocks.0.ffn.layers.1,bias,"(352,)",352,True
+stages.0.blocks.0.norm2.weight,stages.0.blocks.0.norm2,weight,"(352,)",352,True
+stages.0.blocks.0.norm2.bias,stages.0.blocks.0.norm2,bias,"(352,)",352,True
+stages.0.blocks.1.attn.w_msa.logit_scale,stages.0.blocks.1.attn.w_msa,logit_scale,"(8, 1, 1)",8,True
+stages.0.blocks.1.attn.w_msa.q_bias,stages.0.blocks.1.attn.w_msa,q_bias,"(352,)",352,True
+stages.0.blocks.1.attn.w_msa.v_bias,stages.0.blocks.1.attn.w_msa,v_bias,"(352,)",352,True
+stages.0.blocks.1.attn.w_msa.cpb_mlp.0.weight,stages.0.blocks.1.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.0.blocks.1.attn.w_msa.cpb_mlp.0.bias,stages.0.blocks.1.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.0.blocks.1.attn.w_msa.cpb_mlp.2.weight,stages.0.blocks.1.attn.w_msa.cpb_mlp.2,weight,"(8, 512)",4096,True
+stages.0.blocks.1.attn.w_msa.qkv.weight,stages.0.blocks.1.attn.w_msa.qkv,weight,"(1056, 352)",371712,True
+stages.0.blocks.1.attn.w_msa.proj.weight,stages.0.blocks.1.attn.w_msa.proj,weight,"(352, 352)",123904,True
+stages.0.blocks.1.attn.w_msa.proj.bias,stages.0.blocks.1.attn.w_msa.proj,bias,"(352,)",352,True
+stages.0.blocks.1.norm1.weight,stages.0.blocks.1.norm1,weight,"(352,)",352,True
+stages.0.blocks.1.norm1.bias,stages.0.blocks.1.norm1,bias,"(352,)",352,True
+stages.0.blocks.1.ffn.layers.0.0.weight,stages.0.blocks.1.ffn.layers.0.0,weight,"(1408, 352)",495616,True
+stages.0.blocks.1.ffn.layers.0.0.bias,stages.0.blocks.1.ffn.layers.0.0,bias,"(1408,)",1408,True
+stages.0.blocks.1.ffn.layers.1.weight,stages.0.blocks.1.ffn.layers.1,weight,"(352, 1408)",495616,True
+stages.0.blocks.1.ffn.layers.1.bias,stages.0.blocks.1.ffn.layers.1,bias,"(352,)",352,True
+stages.0.blocks.1.norm2.weight,stages.0.blocks.1.norm2,weight,"(352,)",352,True
+stages.0.blocks.1.norm2.bias,stages.0.blocks.1.norm2,bias,"(352,)",352,True
+stages.1.downsample.reduction.weight,stages.1.downsample.reduction,weight,"(704, 1408)",991232,True
+stages.1.downsample.norm.weight,stages.1.downsample.norm,weight,"(704,)",704,True
+stages.1.downsample.norm.bias,stages.1.downsample.norm,bias,"(704,)",704,True
+stages.1.blocks.0.attn.w_msa.logit_scale,stages.1.blocks.0.attn.w_msa,logit_scale,"(16, 1, 1)",16,True
+stages.1.blocks.0.attn.w_msa.q_bias,stages.1.blocks.0.attn.w_msa,q_bias,"(704,)",704,True
+stages.1.blocks.0.attn.w_msa.v_bias,stages.1.blocks.0.attn.w_msa,v_bias,"(704,)",704,True
+stages.1.blocks.0.attn.w_msa.cpb_mlp.0.weight,stages.1.blocks.0.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.1.blocks.0.attn.w_msa.cpb_mlp.0.bias,stages.1.blocks.0.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.1.blocks.0.attn.w_msa.cpb_mlp.2.weight,stages.1.blocks.0.attn.w_msa.cpb_mlp.2,weight,"(16, 512)",8192,True
+stages.1.blocks.0.attn.w_msa.qkv.weight,stages.1.blocks.0.attn.w_msa.qkv,weight,"(2112, 704)",1486848,True
+stages.1.blocks.0.attn.w_msa.proj.weight,stages.1.blocks.0.attn.w_msa.proj,weight,"(704, 704)",495616,True
+stages.1.blocks.0.attn.w_msa.proj.bias,stages.1.blocks.0.attn.w_msa.proj,bias,"(704,)",704,True
+stages.1.blocks.0.norm1.weight,stages.1.blocks.0.norm1,weight,"(704,)",704,True
+stages.1.blocks.0.norm1.bias,stages.1.blocks.0.norm1,bias,"(704,)",704,True
+stages.1.blocks.0.ffn.layers.0.0.weight,stages.1.blocks.0.ffn.layers.0.0,weight,"(2816, 704)",1982464,True
+stages.1.blocks.0.ffn.layers.0.0.bias,stages.1.blocks.0.ffn.layers.0.0,bias,"(2816,)",2816,True
+stages.1.blocks.0.ffn.layers.1.weight,stages.1.blocks.0.ffn.layers.1,weight,"(704, 2816)",1982464,True
+stages.1.blocks.0.ffn.layers.1.bias,stages.1.blocks.0.ffn.layers.1,bias,"(704,)",704,True
+stages.1.blocks.0.norm2.weight,stages.1.blocks.0.norm2,weight,"(704,)",704,True
+stages.1.blocks.0.norm2.bias,stages.1.blocks.0.norm2,bias,"(704,)",704,True
+stages.1.blocks.1.attn.w_msa.logit_scale,stages.1.blocks.1.attn.w_msa,logit_scale,"(16, 1, 1)",16,True
+stages.1.blocks.1.attn.w_msa.q_bias,stages.1.blocks.1.attn.w_msa,q_bias,"(704,)",704,True
+stages.1.blocks.1.attn.w_msa.v_bias,stages.1.blocks.1.attn.w_msa,v_bias,"(704,)",704,True
+stages.1.blocks.1.attn.w_msa.cpb_mlp.0.weight,stages.1.blocks.1.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.1.blocks.1.attn.w_msa.cpb_mlp.0.bias,stages.1.blocks.1.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.1.blocks.1.attn.w_msa.cpb_mlp.2.weight,stages.1.blocks.1.attn.w_msa.cpb_mlp.2,weight,"(16, 512)",8192,True
+stages.1.blocks.1.attn.w_msa.qkv.weight,stages.1.blocks.1.attn.w_msa.qkv,weight,"(2112, 704)",1486848,True
+stages.1.blocks.1.attn.w_msa.proj.weight,stages.1.blocks.1.attn.w_msa.proj,weight,"(704, 704)",495616,True
+stages.1.blocks.1.attn.w_msa.proj.bias,stages.1.blocks.1.attn.w_msa.proj,bias,"(704,)",704,True
+stages.1.blocks.1.norm1.weight,stages.1.blocks.1.norm1,weight,"(704,)",704,True
+stages.1.blocks.1.norm1.bias,stages.1.blocks.1.norm1,bias,"(704,)",704,True
+stages.1.blocks.1.ffn.layers.0.0.weight,stages.1.blocks.1.ffn.layers.0.0,weight,"(2816, 704)",1982464,True
+stages.1.blocks.1.ffn.layers.0.0.bias,stages.1.blocks.1.ffn.layers.0.0,bias,"(2816,)",2816,True
+stages.1.blocks.1.ffn.layers.1.weight,stages.1.blocks.1.ffn.layers.1,weight,"(704, 2816)",1982464,True
+stages.1.blocks.1.ffn.layers.1.bias,stages.1.blocks.1.ffn.layers.1,bias,"(704,)",704,True
+stages.1.blocks.1.norm2.weight,stages.1.blocks.1.norm2,weight,"(704,)",704,True
+stages.1.blocks.1.norm2.bias,stages.1.blocks.1.norm2,bias,"(704,)",704,True
+stages.2.downsample.reduction.weight,stages.2.downsample.reduction,weight,"(1408, 2816)",3964928,True
+stages.2.downsample.norm.weight,stages.2.downsample.norm,weight,"(1408,)",1408,True
+stages.2.downsample.norm.bias,stages.2.downsample.norm,bias,"(1408,)",1408,True
+stages.2.blocks.0.attn.w_msa.logit_scale,stages.2.blocks.0.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.0.attn.w_msa.q_bias,stages.2.blocks.0.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.0.attn.w_msa.v_bias,stages.2.blocks.0.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.0.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.0.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.0.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.0.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.0.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.0.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.0.attn.w_msa.qkv.weight,stages.2.blocks.0.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.0.attn.w_msa.proj.weight,stages.2.blocks.0.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.0.attn.w_msa.proj.bias,stages.2.blocks.0.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.0.norm1.weight,stages.2.blocks.0.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.0.norm1.bias,stages.2.blocks.0.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.0.ffn.layers.0.0.weight,stages.2.blocks.0.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.0.ffn.layers.0.0.bias,stages.2.blocks.0.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.0.ffn.layers.1.weight,stages.2.blocks.0.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.0.ffn.layers.1.bias,stages.2.blocks.0.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.0.norm2.weight,stages.2.blocks.0.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.0.norm2.bias,stages.2.blocks.0.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.1.attn.w_msa.logit_scale,stages.2.blocks.1.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.1.attn.w_msa.q_bias,stages.2.blocks.1.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.1.attn.w_msa.v_bias,stages.2.blocks.1.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.1.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.1.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.1.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.1.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.1.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.1.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.1.attn.w_msa.qkv.weight,stages.2.blocks.1.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.1.attn.w_msa.proj.weight,stages.2.blocks.1.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.1.attn.w_msa.proj.bias,stages.2.blocks.1.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.1.norm1.weight,stages.2.blocks.1.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.1.norm1.bias,stages.2.blocks.1.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.1.ffn.layers.0.0.weight,stages.2.blocks.1.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.1.ffn.layers.0.0.bias,stages.2.blocks.1.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.1.ffn.layers.1.weight,stages.2.blocks.1.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.1.ffn.layers.1.bias,stages.2.blocks.1.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.1.norm2.weight,stages.2.blocks.1.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.1.norm2.bias,stages.2.blocks.1.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.2.attn.w_msa.logit_scale,stages.2.blocks.2.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.2.attn.w_msa.q_bias,stages.2.blocks.2.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.2.attn.w_msa.v_bias,stages.2.blocks.2.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.2.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.2.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.2.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.2.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.2.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.2.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.2.attn.w_msa.qkv.weight,stages.2.blocks.2.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.2.attn.w_msa.proj.weight,stages.2.blocks.2.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.2.attn.w_msa.proj.bias,stages.2.blocks.2.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.2.norm1.weight,stages.2.blocks.2.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.2.norm1.bias,stages.2.blocks.2.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.2.ffn.layers.0.0.weight,stages.2.blocks.2.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.2.ffn.layers.0.0.bias,stages.2.blocks.2.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.2.ffn.layers.1.weight,stages.2.blocks.2.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.2.ffn.layers.1.bias,stages.2.blocks.2.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.2.norm2.weight,stages.2.blocks.2.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.2.norm2.bias,stages.2.blocks.2.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.3.attn.w_msa.logit_scale,stages.2.blocks.3.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.3.attn.w_msa.q_bias,stages.2.blocks.3.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.3.attn.w_msa.v_bias,stages.2.blocks.3.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.3.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.3.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.3.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.3.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.3.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.3.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.3.attn.w_msa.qkv.weight,stages.2.blocks.3.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.3.attn.w_msa.proj.weight,stages.2.blocks.3.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.3.attn.w_msa.proj.bias,stages.2.blocks.3.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.3.norm1.weight,stages.2.blocks.3.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.3.norm1.bias,stages.2.blocks.3.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.3.ffn.layers.0.0.weight,stages.2.blocks.3.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.3.ffn.layers.0.0.bias,stages.2.blocks.3.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.3.ffn.layers.1.weight,stages.2.blocks.3.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.3.ffn.layers.1.bias,stages.2.blocks.3.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.3.norm2.weight,stages.2.blocks.3.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.3.norm2.bias,stages.2.blocks.3.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.4.attn.w_msa.logit_scale,stages.2.blocks.4.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.4.attn.w_msa.q_bias,stages.2.blocks.4.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.4.attn.w_msa.v_bias,stages.2.blocks.4.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.4.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.4.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.4.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.4.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.4.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.4.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.4.attn.w_msa.qkv.weight,stages.2.blocks.4.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.4.attn.w_msa.proj.weight,stages.2.blocks.4.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.4.attn.w_msa.proj.bias,stages.2.blocks.4.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.4.norm1.weight,stages.2.blocks.4.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.4.norm1.bias,stages.2.blocks.4.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.4.ffn.layers.0.0.weight,stages.2.blocks.4.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.4.ffn.layers.0.0.bias,stages.2.blocks.4.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.4.ffn.layers.1.weight,stages.2.blocks.4.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.4.ffn.layers.1.bias,stages.2.blocks.4.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.4.norm2.weight,stages.2.blocks.4.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.4.norm2.bias,stages.2.blocks.4.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.5.attn.w_msa.logit_scale,stages.2.blocks.5.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.5.attn.w_msa.q_bias,stages.2.blocks.5.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.5.attn.w_msa.v_bias,stages.2.blocks.5.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.5.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.5.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.5.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.5.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.5.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.5.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.5.attn.w_msa.qkv.weight,stages.2.blocks.5.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.5.attn.w_msa.proj.weight,stages.2.blocks.5.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.5.attn.w_msa.proj.bias,stages.2.blocks.5.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.5.norm1.weight,stages.2.blocks.5.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.5.norm1.bias,stages.2.blocks.5.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.5.ffn.layers.0.0.weight,stages.2.blocks.5.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.5.ffn.layers.0.0.bias,stages.2.blocks.5.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.5.ffn.layers.1.weight,stages.2.blocks.5.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.5.ffn.layers.1.bias,stages.2.blocks.5.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.5.norm2.weight,stages.2.blocks.5.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.5.norm2.bias,stages.2.blocks.5.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.5.norm3.weight,stages.2.blocks.5.norm3,weight,"(1408,)",1408,True
+stages.2.blocks.5.norm3.bias,stages.2.blocks.5.norm3,bias,"(1408,)",1408,True
+stages.2.blocks.6.attn.w_msa.logit_scale,stages.2.blocks.6.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.6.attn.w_msa.q_bias,stages.2.blocks.6.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.6.attn.w_msa.v_bias,stages.2.blocks.6.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.6.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.6.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.6.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.6.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.6.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.6.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.6.attn.w_msa.qkv.weight,stages.2.blocks.6.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.6.attn.w_msa.proj.weight,stages.2.blocks.6.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.6.attn.w_msa.proj.bias,stages.2.blocks.6.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.6.norm1.weight,stages.2.blocks.6.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.6.norm1.bias,stages.2.blocks.6.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.6.ffn.layers.0.0.weight,stages.2.blocks.6.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.6.ffn.layers.0.0.bias,stages.2.blocks.6.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.6.ffn.layers.1.weight,stages.2.blocks.6.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.6.ffn.layers.1.bias,stages.2.blocks.6.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.6.norm2.weight,stages.2.blocks.6.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.6.norm2.bias,stages.2.blocks.6.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.7.attn.w_msa.logit_scale,stages.2.blocks.7.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.7.attn.w_msa.q_bias,stages.2.blocks.7.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.7.attn.w_msa.v_bias,stages.2.blocks.7.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.7.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.7.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.7.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.7.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.7.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.7.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.7.attn.w_msa.qkv.weight,stages.2.blocks.7.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.7.attn.w_msa.proj.weight,stages.2.blocks.7.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.7.attn.w_msa.proj.bias,stages.2.blocks.7.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.7.norm1.weight,stages.2.blocks.7.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.7.norm1.bias,stages.2.blocks.7.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.7.ffn.layers.0.0.weight,stages.2.blocks.7.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.7.ffn.layers.0.0.bias,stages.2.blocks.7.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.7.ffn.layers.1.weight,stages.2.blocks.7.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.7.ffn.layers.1.bias,stages.2.blocks.7.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.7.norm2.weight,stages.2.blocks.7.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.7.norm2.bias,stages.2.blocks.7.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.8.attn.w_msa.logit_scale,stages.2.blocks.8.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.8.attn.w_msa.q_bias,stages.2.blocks.8.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.8.attn.w_msa.v_bias,stages.2.blocks.8.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.8.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.8.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.8.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.8.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.8.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.8.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.8.attn.w_msa.qkv.weight,stages.2.blocks.8.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.8.attn.w_msa.proj.weight,stages.2.blocks.8.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.8.attn.w_msa.proj.bias,stages.2.blocks.8.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.8.norm1.weight,stages.2.blocks.8.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.8.norm1.bias,stages.2.blocks.8.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.8.ffn.layers.0.0.weight,stages.2.blocks.8.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.8.ffn.layers.0.0.bias,stages.2.blocks.8.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.8.ffn.layers.1.weight,stages.2.blocks.8.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.8.ffn.layers.1.bias,stages.2.blocks.8.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.8.norm2.weight,stages.2.blocks.8.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.8.norm2.bias,stages.2.blocks.8.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.9.attn.w_msa.logit_scale,stages.2.blocks.9.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.9.attn.w_msa.q_bias,stages.2.blocks.9.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.9.attn.w_msa.v_bias,stages.2.blocks.9.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.9.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.9.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.9.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.9.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.9.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.9.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.9.attn.w_msa.qkv.weight,stages.2.blocks.9.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.9.attn.w_msa.proj.weight,stages.2.blocks.9.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.9.attn.w_msa.proj.bias,stages.2.blocks.9.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.9.norm1.weight,stages.2.blocks.9.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.9.norm1.bias,stages.2.blocks.9.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.9.ffn.layers.0.0.weight,stages.2.blocks.9.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.9.ffn.layers.0.0.bias,stages.2.blocks.9.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.9.ffn.layers.1.weight,stages.2.blocks.9.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.9.ffn.layers.1.bias,stages.2.blocks.9.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.9.norm2.weight,stages.2.blocks.9.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.9.norm2.bias,stages.2.blocks.9.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.10.attn.w_msa.logit_scale,stages.2.blocks.10.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.10.attn.w_msa.q_bias,stages.2.blocks.10.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.10.attn.w_msa.v_bias,stages.2.blocks.10.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.10.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.10.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.10.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.10.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.10.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.10.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.10.attn.w_msa.qkv.weight,stages.2.blocks.10.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.10.attn.w_msa.proj.weight,stages.2.blocks.10.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.10.attn.w_msa.proj.bias,stages.2.blocks.10.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.10.norm1.weight,stages.2.blocks.10.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.10.norm1.bias,stages.2.blocks.10.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.10.ffn.layers.0.0.weight,stages.2.blocks.10.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.10.ffn.layers.0.0.bias,stages.2.blocks.10.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.10.ffn.layers.1.weight,stages.2.blocks.10.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.10.ffn.layers.1.bias,stages.2.blocks.10.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.10.norm2.weight,stages.2.blocks.10.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.10.norm2.bias,stages.2.blocks.10.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.11.attn.w_msa.logit_scale,stages.2.blocks.11.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.11.attn.w_msa.q_bias,stages.2.blocks.11.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.11.attn.w_msa.v_bias,stages.2.blocks.11.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.11.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.11.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.11.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.11.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.11.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.11.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.11.attn.w_msa.qkv.weight,stages.2.blocks.11.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.11.attn.w_msa.proj.weight,stages.2.blocks.11.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.11.attn.w_msa.proj.bias,stages.2.blocks.11.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.11.norm1.weight,stages.2.blocks.11.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.11.norm1.bias,stages.2.blocks.11.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.11.ffn.layers.0.0.weight,stages.2.blocks.11.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.11.ffn.layers.0.0.bias,stages.2.blocks.11.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.11.ffn.layers.1.weight,stages.2.blocks.11.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.11.ffn.layers.1.bias,stages.2.blocks.11.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.11.norm2.weight,stages.2.blocks.11.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.11.norm2.bias,stages.2.blocks.11.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.11.norm3.weight,stages.2.blocks.11.norm3,weight,"(1408,)",1408,True
+stages.2.blocks.11.norm3.bias,stages.2.blocks.11.norm3,bias,"(1408,)",1408,True
+stages.2.blocks.12.attn.w_msa.logit_scale,stages.2.blocks.12.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.12.attn.w_msa.q_bias,stages.2.blocks.12.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.12.attn.w_msa.v_bias,stages.2.blocks.12.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.12.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.12.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.12.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.12.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.12.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.12.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.12.attn.w_msa.qkv.weight,stages.2.blocks.12.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.12.attn.w_msa.proj.weight,stages.2.blocks.12.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.12.attn.w_msa.proj.bias,stages.2.blocks.12.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.12.norm1.weight,stages.2.blocks.12.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.12.norm1.bias,stages.2.blocks.12.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.12.ffn.layers.0.0.weight,stages.2.blocks.12.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.12.ffn.layers.0.0.bias,stages.2.blocks.12.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.12.ffn.layers.1.weight,stages.2.blocks.12.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.12.ffn.layers.1.bias,stages.2.blocks.12.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.12.norm2.weight,stages.2.blocks.12.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.12.norm2.bias,stages.2.blocks.12.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.13.attn.w_msa.logit_scale,stages.2.blocks.13.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.13.attn.w_msa.q_bias,stages.2.blocks.13.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.13.attn.w_msa.v_bias,stages.2.blocks.13.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.13.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.13.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.13.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.13.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.13.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.13.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.13.attn.w_msa.qkv.weight,stages.2.blocks.13.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.13.attn.w_msa.proj.weight,stages.2.blocks.13.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.13.attn.w_msa.proj.bias,stages.2.blocks.13.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.13.norm1.weight,stages.2.blocks.13.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.13.norm1.bias,stages.2.blocks.13.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.13.ffn.layers.0.0.weight,stages.2.blocks.13.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.13.ffn.layers.0.0.bias,stages.2.blocks.13.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.13.ffn.layers.1.weight,stages.2.blocks.13.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.13.ffn.layers.1.bias,stages.2.blocks.13.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.13.norm2.weight,stages.2.blocks.13.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.13.norm2.bias,stages.2.blocks.13.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.14.attn.w_msa.logit_scale,stages.2.blocks.14.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.14.attn.w_msa.q_bias,stages.2.blocks.14.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.14.attn.w_msa.v_bias,stages.2.blocks.14.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.14.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.14.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.14.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.14.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.14.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.14.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.14.attn.w_msa.qkv.weight,stages.2.blocks.14.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.14.attn.w_msa.proj.weight,stages.2.blocks.14.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.14.attn.w_msa.proj.bias,stages.2.blocks.14.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.14.norm1.weight,stages.2.blocks.14.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.14.norm1.bias,stages.2.blocks.14.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.14.ffn.layers.0.0.weight,stages.2.blocks.14.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.14.ffn.layers.0.0.bias,stages.2.blocks.14.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.14.ffn.layers.1.weight,stages.2.blocks.14.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.14.ffn.layers.1.bias,stages.2.blocks.14.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.14.norm2.weight,stages.2.blocks.14.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.14.norm2.bias,stages.2.blocks.14.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.15.attn.w_msa.logit_scale,stages.2.blocks.15.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.15.attn.w_msa.q_bias,stages.2.blocks.15.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.15.attn.w_msa.v_bias,stages.2.blocks.15.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.15.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.15.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.15.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.15.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.15.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.15.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.15.attn.w_msa.qkv.weight,stages.2.blocks.15.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.15.attn.w_msa.proj.weight,stages.2.blocks.15.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.15.attn.w_msa.proj.bias,stages.2.blocks.15.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.15.norm1.weight,stages.2.blocks.15.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.15.norm1.bias,stages.2.blocks.15.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.15.ffn.layers.0.0.weight,stages.2.blocks.15.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.15.ffn.layers.0.0.bias,stages.2.blocks.15.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.15.ffn.layers.1.weight,stages.2.blocks.15.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.15.ffn.layers.1.bias,stages.2.blocks.15.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.15.norm2.weight,stages.2.blocks.15.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.15.norm2.bias,stages.2.blocks.15.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.16.attn.w_msa.logit_scale,stages.2.blocks.16.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.16.attn.w_msa.q_bias,stages.2.blocks.16.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.16.attn.w_msa.v_bias,stages.2.blocks.16.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.16.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.16.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.16.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.16.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.16.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.16.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.16.attn.w_msa.qkv.weight,stages.2.blocks.16.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.16.attn.w_msa.proj.weight,stages.2.blocks.16.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.16.attn.w_msa.proj.bias,stages.2.blocks.16.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.16.norm1.weight,stages.2.blocks.16.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.16.norm1.bias,stages.2.blocks.16.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.16.ffn.layers.0.0.weight,stages.2.blocks.16.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.16.ffn.layers.0.0.bias,stages.2.blocks.16.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.16.ffn.layers.1.weight,stages.2.blocks.16.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.16.ffn.layers.1.bias,stages.2.blocks.16.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.16.norm2.weight,stages.2.blocks.16.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.16.norm2.bias,stages.2.blocks.16.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.17.attn.w_msa.logit_scale,stages.2.blocks.17.attn.w_msa,logit_scale,"(32, 1, 1)",32,True
+stages.2.blocks.17.attn.w_msa.q_bias,stages.2.blocks.17.attn.w_msa,q_bias,"(1408,)",1408,True
+stages.2.blocks.17.attn.w_msa.v_bias,stages.2.blocks.17.attn.w_msa,v_bias,"(1408,)",1408,True
+stages.2.blocks.17.attn.w_msa.cpb_mlp.0.weight,stages.2.blocks.17.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.2.blocks.17.attn.w_msa.cpb_mlp.0.bias,stages.2.blocks.17.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.2.blocks.17.attn.w_msa.cpb_mlp.2.weight,stages.2.blocks.17.attn.w_msa.cpb_mlp.2,weight,"(32, 512)",16384,True
+stages.2.blocks.17.attn.w_msa.qkv.weight,stages.2.blocks.17.attn.w_msa.qkv,weight,"(4224, 1408)",5947392,True
+stages.2.blocks.17.attn.w_msa.proj.weight,stages.2.blocks.17.attn.w_msa.proj,weight,"(1408, 1408)",1982464,True
+stages.2.blocks.17.attn.w_msa.proj.bias,stages.2.blocks.17.attn.w_msa.proj,bias,"(1408,)",1408,True
+stages.2.blocks.17.norm1.weight,stages.2.blocks.17.norm1,weight,"(1408,)",1408,True
+stages.2.blocks.17.norm1.bias,stages.2.blocks.17.norm1,bias,"(1408,)",1408,True
+stages.2.blocks.17.ffn.layers.0.0.weight,stages.2.blocks.17.ffn.layers.0.0,weight,"(5632, 1408)",7929856,True
+stages.2.blocks.17.ffn.layers.0.0.bias,stages.2.blocks.17.ffn.layers.0.0,bias,"(5632,)",5632,True
+stages.2.blocks.17.ffn.layers.1.weight,stages.2.blocks.17.ffn.layers.1,weight,"(1408, 5632)",7929856,True
+stages.2.blocks.17.ffn.layers.1.bias,stages.2.blocks.17.ffn.layers.1,bias,"(1408,)",1408,True
+stages.2.blocks.17.norm2.weight,stages.2.blocks.17.norm2,weight,"(1408,)",1408,True
+stages.2.blocks.17.norm2.bias,stages.2.blocks.17.norm2,bias,"(1408,)",1408,True
+stages.2.blocks.17.norm3.weight,stages.2.blocks.17.norm3,weight,"(1408,)",1408,True
+stages.2.blocks.17.norm3.bias,stages.2.blocks.17.norm3,bias,"(1408,)",1408,True
+stages.3.downsample.reduction.weight,stages.3.downsample.reduction,weight,"(2816, 5632)",15859712,True
+stages.3.downsample.norm.weight,stages.3.downsample.norm,weight,"(2816,)",2816,True
+stages.3.downsample.norm.bias,stages.3.downsample.norm,bias,"(2816,)",2816,True
+stages.3.blocks.0.attn.w_msa.logit_scale,stages.3.blocks.0.attn.w_msa,logit_scale,"(64, 1, 1)",64,True
+stages.3.blocks.0.attn.w_msa.q_bias,stages.3.blocks.0.attn.w_msa,q_bias,"(2816,)",2816,True
+stages.3.blocks.0.attn.w_msa.v_bias,stages.3.blocks.0.attn.w_msa,v_bias,"(2816,)",2816,True
+stages.3.blocks.0.attn.w_msa.cpb_mlp.0.weight,stages.3.blocks.0.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.3.blocks.0.attn.w_msa.cpb_mlp.0.bias,stages.3.blocks.0.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.3.blocks.0.attn.w_msa.cpb_mlp.2.weight,stages.3.blocks.0.attn.w_msa.cpb_mlp.2,weight,"(64, 512)",32768,True
+stages.3.blocks.0.attn.w_msa.qkv.weight,stages.3.blocks.0.attn.w_msa.qkv,weight,"(8448, 2816)",23789568,True
+stages.3.blocks.0.attn.w_msa.proj.weight,stages.3.blocks.0.attn.w_msa.proj,weight,"(2816, 2816)",7929856,True
+stages.3.blocks.0.attn.w_msa.proj.bias,stages.3.blocks.0.attn.w_msa.proj,bias,"(2816,)",2816,True
+stages.3.blocks.0.norm1.weight,stages.3.blocks.0.norm1,weight,"(2816,)",2816,True
+stages.3.blocks.0.norm1.bias,stages.3.blocks.0.norm1,bias,"(2816,)",2816,True
+stages.3.blocks.0.ffn.layers.0.0.weight,stages.3.blocks.0.ffn.layers.0.0,weight,"(11264, 2816)",31719424,True
+stages.3.blocks.0.ffn.layers.0.0.bias,stages.3.blocks.0.ffn.layers.0.0,bias,"(11264,)",11264,True
+stages.3.blocks.0.ffn.layers.1.weight,stages.3.blocks.0.ffn.layers.1,weight,"(2816, 11264)",31719424,True
+stages.3.blocks.0.ffn.layers.1.bias,stages.3.blocks.0.ffn.layers.1,bias,"(2816,)",2816,True
+stages.3.blocks.0.norm2.weight,stages.3.blocks.0.norm2,weight,"(2816,)",2816,True
+stages.3.blocks.0.norm2.bias,stages.3.blocks.0.norm2,bias,"(2816,)",2816,True
+stages.3.blocks.1.attn.w_msa.logit_scale,stages.3.blocks.1.attn.w_msa,logit_scale,"(64, 1, 1)",64,True
+stages.3.blocks.1.attn.w_msa.q_bias,stages.3.blocks.1.attn.w_msa,q_bias,"(2816,)",2816,True
+stages.3.blocks.1.attn.w_msa.v_bias,stages.3.blocks.1.attn.w_msa,v_bias,"(2816,)",2816,True
+stages.3.blocks.1.attn.w_msa.cpb_mlp.0.weight,stages.3.blocks.1.attn.w_msa.cpb_mlp.0,weight,"(512, 2)",1024,True
+stages.3.blocks.1.attn.w_msa.cpb_mlp.0.bias,stages.3.blocks.1.attn.w_msa.cpb_mlp.0,bias,"(512,)",512,True
+stages.3.blocks.1.attn.w_msa.cpb_mlp.2.weight,stages.3.blocks.1.attn.w_msa.cpb_mlp.2,weight,"(64, 512)",32768,True
+stages.3.blocks.1.attn.w_msa.qkv.weight,stages.3.blocks.1.attn.w_msa.qkv,weight,"(8448, 2816)",23789568,True
+stages.3.blocks.1.attn.w_msa.proj.weight,stages.3.blocks.1.attn.w_msa.proj,weight,"(2816, 2816)",7929856,True
+stages.3.blocks.1.attn.w_msa.proj.bias,stages.3.blocks.1.attn.w_msa.proj,bias,"(2816,)",2816,True
+stages.3.blocks.1.norm1.weight,stages.3.blocks.1.norm1,weight,"(2816,)",2816,True
+stages.3.blocks.1.norm1.bias,stages.3.blocks.1.norm1,bias,"(2816,)",2816,True
+stages.3.blocks.1.ffn.layers.0.0.weight,stages.3.blocks.1.ffn.layers.0.0,weight,"(11264, 2816)",31719424,True
+stages.3.blocks.1.ffn.layers.0.0.bias,stages.3.blocks.1.ffn.layers.0.0,bias,"(11264,)",11264,True
+stages.3.blocks.1.ffn.layers.1.weight,stages.3.blocks.1.ffn.layers.1,weight,"(2816, 11264)",31719424,True
+stages.3.blocks.1.ffn.layers.1.bias,stages.3.blocks.1.ffn.layers.1,bias,"(2816,)",2816,True
+stages.3.blocks.1.norm2.weight,stages.3.blocks.1.norm2,weight,"(2816,)",2816,True
+stages.3.blocks.1.norm2.bias,stages.3.blocks.1.norm2,bias,"(2816,)",2816,True
+norm3.weight,norm3,weight,"(2816,)",2816,True
+norm3.bias,norm3,bias,"(2816,)",2816,True

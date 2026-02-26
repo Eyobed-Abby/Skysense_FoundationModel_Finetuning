@@ -1,0 +1,611 @@
+module_name,module_type,has_weight,weight_shape,has_bias,bias_shape,is_linear,is_conv,is_norm,is_attention_like,is_ffn_like
+,SwinTransformerV2,False,,False,,False,False,False,False,False
+patch_embed,PatchEmbed,False,,False,,False,False,False,False,False
+patch_embed.adaptive_padding,AdaptivePadding,False,,False,,False,False,False,False,False
+patch_embed.projection,Conv2d,True,"(352, 3, 4, 4)",True,"(352,)",False,True,False,False,False
+patch_embed.norm,LayerNorm,True,"(352,)",True,"(352,)",False,False,True,False,False
+drop_after_pos,Dropout,False,,False,,False,False,False,False,False
+stages,ModuleList,False,,False,,False,False,False,False,False
+stages.0,SwinBlockV2Sequence,False,,False,,False,False,False,False,False
+stages.0.blocks,ModuleList,False,,False,,False,False,False,False,False
+stages.0.blocks.0,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.0.blocks.0.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.0.blocks.0.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.0.blocks.0.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.0.blocks.0.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.0.blocks.0.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.0.blocks.0.attn.w_msa.cpb_mlp.2,Linear,True,"(8, 512)",False,,True,False,False,True,True
+stages.0.blocks.0.attn.w_msa.qkv,Linear,True,"(1056, 352)",False,,True,False,False,True,False
+stages.0.blocks.0.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.0.blocks.0.attn.w_msa.proj,Linear,True,"(352, 352)",True,"(352,)",True,False,False,True,False
+stages.0.blocks.0.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.0.blocks.0.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.0.blocks.0.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.0.blocks.0.norm1,LayerNorm,True,"(352,)",True,"(352,)",False,False,True,False,False
+stages.0.blocks.0.ffn,FFN,False,,False,,False,False,False,False,True
+stages.0.blocks.0.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.0.blocks.0.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.0.blocks.0.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.0.blocks.0.ffn.layers.0.0,Linear,True,"(1408, 352)",True,"(1408,)",True,False,False,False,True
+stages.0.blocks.0.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.0.blocks.0.ffn.layers.1,Linear,True,"(352, 1408)",True,"(352,)",True,False,False,False,True
+stages.0.blocks.0.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.0.blocks.0.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.0.blocks.0.norm2,LayerNorm,True,"(352,)",True,"(352,)",False,False,True,False,False
+stages.0.blocks.1,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.0.blocks.1.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.0.blocks.1.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.0.blocks.1.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.0.blocks.1.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.0.blocks.1.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.0.blocks.1.attn.w_msa.cpb_mlp.2,Linear,True,"(8, 512)",False,,True,False,False,True,True
+stages.0.blocks.1.attn.w_msa.qkv,Linear,True,"(1056, 352)",False,,True,False,False,True,False
+stages.0.blocks.1.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.0.blocks.1.attn.w_msa.proj,Linear,True,"(352, 352)",True,"(352,)",True,False,False,True,False
+stages.0.blocks.1.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.0.blocks.1.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.0.blocks.1.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.0.blocks.1.norm1,LayerNorm,True,"(352,)",True,"(352,)",False,False,True,False,False
+stages.0.blocks.1.ffn,FFN,False,,False,,False,False,False,False,True
+stages.0.blocks.1.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.0.blocks.1.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.0.blocks.1.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.0.blocks.1.ffn.layers.0.0,Linear,True,"(1408, 352)",True,"(1408,)",True,False,False,False,True
+stages.0.blocks.1.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.0.blocks.1.ffn.layers.1,Linear,True,"(352, 1408)",True,"(352,)",True,False,False,False,True
+stages.0.blocks.1.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.0.blocks.1.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.0.blocks.1.norm2,LayerNorm,True,"(352,)",True,"(352,)",False,False,True,False,False
+stages.1,SwinBlockV2Sequence,False,,False,,False,False,False,False,False
+stages.1.downsample,PatchMerging,False,,False,,False,False,False,False,False
+stages.1.downsample.adaptive_padding,AdaptivePadding,False,,False,,False,False,False,False,False
+stages.1.downsample.sampler,Unfold,False,,False,,False,False,False,False,False
+stages.1.downsample.reduction,Linear,True,"(704, 1408)",False,,True,False,False,False,False
+stages.1.downsample.norm,LayerNorm,True,"(704,)",True,"(704,)",False,False,True,False,False
+stages.1.blocks,ModuleList,False,,False,,False,False,False,False,False
+stages.1.blocks.0,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.1.blocks.0.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.1.blocks.0.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.1.blocks.0.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.1.blocks.0.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.1.blocks.0.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.1.blocks.0.attn.w_msa.cpb_mlp.2,Linear,True,"(16, 512)",False,,True,False,False,True,True
+stages.1.blocks.0.attn.w_msa.qkv,Linear,True,"(2112, 704)",False,,True,False,False,True,False
+stages.1.blocks.0.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.1.blocks.0.attn.w_msa.proj,Linear,True,"(704, 704)",True,"(704,)",True,False,False,True,False
+stages.1.blocks.0.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.1.blocks.0.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.1.blocks.0.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.1.blocks.0.norm1,LayerNorm,True,"(704,)",True,"(704,)",False,False,True,False,False
+stages.1.blocks.0.ffn,FFN,False,,False,,False,False,False,False,True
+stages.1.blocks.0.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.1.blocks.0.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.1.blocks.0.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.1.blocks.0.ffn.layers.0.0,Linear,True,"(2816, 704)",True,"(2816,)",True,False,False,False,True
+stages.1.blocks.0.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.1.blocks.0.ffn.layers.1,Linear,True,"(704, 2816)",True,"(704,)",True,False,False,False,True
+stages.1.blocks.0.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.1.blocks.0.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.1.blocks.0.norm2,LayerNorm,True,"(704,)",True,"(704,)",False,False,True,False,False
+stages.1.blocks.1,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.1.blocks.1.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.1.blocks.1.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.1.blocks.1.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.1.blocks.1.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.1.blocks.1.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.1.blocks.1.attn.w_msa.cpb_mlp.2,Linear,True,"(16, 512)",False,,True,False,False,True,True
+stages.1.blocks.1.attn.w_msa.qkv,Linear,True,"(2112, 704)",False,,True,False,False,True,False
+stages.1.blocks.1.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.1.blocks.1.attn.w_msa.proj,Linear,True,"(704, 704)",True,"(704,)",True,False,False,True,False
+stages.1.blocks.1.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.1.blocks.1.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.1.blocks.1.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.1.blocks.1.norm1,LayerNorm,True,"(704,)",True,"(704,)",False,False,True,False,False
+stages.1.blocks.1.ffn,FFN,False,,False,,False,False,False,False,True
+stages.1.blocks.1.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.1.blocks.1.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.1.blocks.1.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.1.blocks.1.ffn.layers.0.0,Linear,True,"(2816, 704)",True,"(2816,)",True,False,False,False,True
+stages.1.blocks.1.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.1.blocks.1.ffn.layers.1,Linear,True,"(704, 2816)",True,"(704,)",True,False,False,False,True
+stages.1.blocks.1.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.1.blocks.1.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.1.blocks.1.norm2,LayerNorm,True,"(704,)",True,"(704,)",False,False,True,False,False
+stages.2,SwinBlockV2Sequence,False,,False,,False,False,False,False,False
+stages.2.downsample,PatchMerging,False,,False,,False,False,False,False,False
+stages.2.downsample.adaptive_padding,AdaptivePadding,False,,False,,False,False,False,False,False
+stages.2.downsample.sampler,Unfold,False,,False,,False,False,False,False,False
+stages.2.downsample.reduction,Linear,True,"(1408, 2816)",False,,True,False,False,False,False
+stages.2.downsample.norm,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks,ModuleList,False,,False,,False,False,False,False,False
+stages.2.blocks.0,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.0.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.0.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.0.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.0.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.0.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.0.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.0.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.0.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.0.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.0.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.0.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.0.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.0.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.0.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.0.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.0.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.0.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.0.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.0.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.0.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.0.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.0.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.0.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.1,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.1.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.1.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.1.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.1.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.1.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.1.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.1.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.1.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.1.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.1.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.1.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.1.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.1.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.1.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.1.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.1.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.1.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.1.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.1.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.1.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.1.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.1.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.1.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.2,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.2.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.2.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.2.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.2.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.2.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.2.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.2.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.2.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.2.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.2.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.2.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.2.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.2.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.2.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.2.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.2.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.2.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.2.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.2.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.2.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.2.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.2.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.2.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.3,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.3.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.3.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.3.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.3.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.3.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.3.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.3.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.3.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.3.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.3.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.3.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.3.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.3.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.3.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.3.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.3.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.3.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.3.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.3.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.3.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.3.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.3.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.3.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.4,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.4.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.4.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.4.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.4.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.4.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.4.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.4.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.4.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.4.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.4.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.4.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.4.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.4.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.4.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.4.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.4.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.4.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.4.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.4.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.4.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.4.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.4.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.4.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.5,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.5.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.5.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.5.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.5.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.5.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.5.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.5.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.5.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.5.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.5.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.5.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.5.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.5.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.5.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.5.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.5.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.5.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.5.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.5.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.5.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.5.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.5.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.5.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.5.norm3,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.6,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.6.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.6.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.6.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.6.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.6.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.6.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.6.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.6.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.6.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.6.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.6.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.6.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.6.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.6.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.6.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.6.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.6.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.6.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.6.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.6.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.6.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.6.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.6.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.7,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.7.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.7.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.7.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.7.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.7.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.7.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.7.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.7.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.7.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.7.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.7.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.7.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.7.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.7.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.7.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.7.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.7.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.7.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.7.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.7.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.7.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.7.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.7.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.8,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.8.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.8.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.8.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.8.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.8.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.8.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.8.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.8.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.8.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.8.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.8.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.8.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.8.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.8.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.8.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.8.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.8.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.8.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.8.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.8.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.8.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.8.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.8.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.9,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.9.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.9.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.9.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.9.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.9.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.9.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.9.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.9.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.9.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.9.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.9.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.9.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.9.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.9.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.9.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.9.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.9.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.9.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.9.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.9.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.9.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.9.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.9.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.10,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.10.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.10.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.10.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.10.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.10.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.10.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.10.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.10.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.10.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.10.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.10.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.10.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.10.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.10.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.10.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.10.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.10.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.10.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.10.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.10.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.10.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.10.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.10.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.11,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.11.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.11.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.11.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.11.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.11.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.11.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.11.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.11.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.11.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.11.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.11.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.11.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.11.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.11.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.11.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.11.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.11.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.11.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.11.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.11.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.11.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.11.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.11.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.11.norm3,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.12,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.12.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.12.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.12.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.12.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.12.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.12.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.12.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.12.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.12.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.12.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.12.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.12.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.12.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.12.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.12.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.12.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.12.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.12.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.12.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.12.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.12.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.12.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.12.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.13,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.13.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.13.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.13.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.13.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.13.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.13.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.13.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.13.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.13.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.13.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.13.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.13.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.13.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.13.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.13.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.13.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.13.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.13.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.13.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.13.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.13.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.13.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.13.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.14,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.14.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.14.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.14.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.14.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.14.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.14.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.14.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.14.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.14.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.14.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.14.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.14.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.14.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.14.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.14.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.14.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.14.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.14.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.14.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.14.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.14.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.14.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.14.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.15,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.15.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.15.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.15.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.15.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.15.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.15.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.15.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.15.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.15.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.15.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.15.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.15.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.15.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.15.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.15.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.15.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.15.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.15.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.15.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.15.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.15.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.15.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.15.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.16,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.16.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.16.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.16.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.16.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.16.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.16.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.16.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.16.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.16.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.16.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.16.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.16.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.16.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.16.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.16.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.16.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.16.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.16.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.16.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.16.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.16.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.16.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.16.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.17,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.2.blocks.17.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.2.blocks.17.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.2.blocks.17.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.2.blocks.17.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.2.blocks.17.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.2.blocks.17.attn.w_msa.cpb_mlp.2,Linear,True,"(32, 512)",False,,True,False,False,True,True
+stages.2.blocks.17.attn.w_msa.qkv,Linear,True,"(4224, 1408)",False,,True,False,False,True,False
+stages.2.blocks.17.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.17.attn.w_msa.proj,Linear,True,"(1408, 1408)",True,"(1408,)",True,False,False,True,False
+stages.2.blocks.17.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.2.blocks.17.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.2.blocks.17.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.2.blocks.17.norm1,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.17.ffn,FFN,False,,False,,False,False,False,False,True
+stages.2.blocks.17.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.2.blocks.17.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.17.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.2.blocks.17.ffn.layers.0.0,Linear,True,"(5632, 1408)",True,"(5632,)",True,False,False,False,True
+stages.2.blocks.17.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.17.ffn.layers.1,Linear,True,"(1408, 5632)",True,"(1408,)",True,False,False,False,True
+stages.2.blocks.17.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.2.blocks.17.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.2.blocks.17.norm2,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.2.blocks.17.norm3,LayerNorm,True,"(1408,)",True,"(1408,)",False,False,True,False,False
+stages.3,SwinBlockV2Sequence,False,,False,,False,False,False,False,False
+stages.3.downsample,PatchMerging,False,,False,,False,False,False,False,False
+stages.3.downsample.adaptive_padding,AdaptivePadding,False,,False,,False,False,False,False,False
+stages.3.downsample.sampler,Unfold,False,,False,,False,False,False,False,False
+stages.3.downsample.reduction,Linear,True,"(2816, 5632)",False,,True,False,False,False,False
+stages.3.downsample.norm,LayerNorm,True,"(2816,)",True,"(2816,)",False,False,True,False,False
+stages.3.blocks,ModuleList,False,,False,,False,False,False,False,False
+stages.3.blocks.0,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.3.blocks.0.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.3.blocks.0.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.3.blocks.0.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.3.blocks.0.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.3.blocks.0.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.3.blocks.0.attn.w_msa.cpb_mlp.2,Linear,True,"(64, 512)",False,,True,False,False,True,True
+stages.3.blocks.0.attn.w_msa.qkv,Linear,True,"(8448, 2816)",False,,True,False,False,True,False
+stages.3.blocks.0.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.3.blocks.0.attn.w_msa.proj,Linear,True,"(2816, 2816)",True,"(2816,)",True,False,False,True,False
+stages.3.blocks.0.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.3.blocks.0.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.3.blocks.0.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.3.blocks.0.norm1,LayerNorm,True,"(2816,)",True,"(2816,)",False,False,True,False,False
+stages.3.blocks.0.ffn,FFN,False,,False,,False,False,False,False,True
+stages.3.blocks.0.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.3.blocks.0.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.3.blocks.0.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.3.blocks.0.ffn.layers.0.0,Linear,True,"(11264, 2816)",True,"(11264,)",True,False,False,False,True
+stages.3.blocks.0.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.3.blocks.0.ffn.layers.1,Linear,True,"(2816, 11264)",True,"(2816,)",True,False,False,False,True
+stages.3.blocks.0.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.3.blocks.0.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.3.blocks.0.norm2,LayerNorm,True,"(2816,)",True,"(2816,)",False,False,True,False,False
+stages.3.blocks.1,SwinBlockV2,False,,False,,False,False,False,False,False
+stages.3.blocks.1.attn,ShiftWindowMSA,False,,False,,False,False,False,True,False
+stages.3.blocks.1.attn.w_msa,WindowMSAV2,False,,False,,False,False,False,True,False
+stages.3.blocks.1.attn.w_msa.cpb_mlp,Sequential,False,,False,,False,False,False,True,True
+stages.3.blocks.1.attn.w_msa.cpb_mlp.0,Linear,True,"(512, 2)",True,"(512,)",True,False,False,True,True
+stages.3.blocks.1.attn.w_msa.cpb_mlp.1,ReLU,False,,False,,False,False,False,True,True
+stages.3.blocks.1.attn.w_msa.cpb_mlp.2,Linear,True,"(64, 512)",False,,True,False,False,True,True
+stages.3.blocks.1.attn.w_msa.qkv,Linear,True,"(8448, 2816)",False,,True,False,False,True,False
+stages.3.blocks.1.attn.w_msa.attn_drop,Dropout,False,,False,,False,False,False,True,False
+stages.3.blocks.1.attn.w_msa.proj,Linear,True,"(2816, 2816)",True,"(2816,)",True,False,False,True,False
+stages.3.blocks.1.attn.w_msa.proj_drop,Dropout,False,,False,,False,False,False,True,False
+stages.3.blocks.1.attn.w_msa.softmax,Softmax,False,,False,,False,False,False,True,False
+stages.3.blocks.1.attn.drop,DropPath,False,,False,,False,False,False,True,False
+stages.3.blocks.1.norm1,LayerNorm,True,"(2816,)",True,"(2816,)",False,False,True,False,False
+stages.3.blocks.1.ffn,FFN,False,,False,,False,False,False,False,True
+stages.3.blocks.1.ffn.activate,GELU,False,,False,,False,False,False,False,True
+stages.3.blocks.1.ffn.layers,Sequential,False,,False,,False,False,False,False,True
+stages.3.blocks.1.ffn.layers.0,Sequential,False,,False,,False,False,False,False,True
+stages.3.blocks.1.ffn.layers.0.0,Linear,True,"(11264, 2816)",True,"(11264,)",True,False,False,False,True
+stages.3.blocks.1.ffn.layers.0.2,Dropout,False,,False,,False,False,False,False,True
+stages.3.blocks.1.ffn.layers.1,Linear,True,"(2816, 11264)",True,"(2816,)",True,False,False,False,True
+stages.3.blocks.1.ffn.layers.2,Dropout,False,,False,,False,False,False,False,True
+stages.3.blocks.1.ffn.dropout_layer,DropPath,False,,False,,False,False,False,False,True
+stages.3.blocks.1.norm2,LayerNorm,True,"(2816,)",True,"(2816,)",False,False,True,False,False
+norm3,LayerNorm,True,"(2816,)",True,"(2816,)",False,False,True,False,False
