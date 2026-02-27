@@ -7,6 +7,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import pandas as pd
+from torch.optim import AdamW
 
 from models.swin_transformer_v2 import SwinTransformerV2
 from resisc45_loader import get_resisc45_dataloaders
@@ -26,31 +27,42 @@ def set_seed(seed: int = 42):
 
 
 # ==========================================================
-# 2. Backbone wrapper (no LoRA, no classifier)
+# 2. SkySense-style classifier (NO LoRA)
 # ==========================================================
 
-class SkySenseBackboneWrapper(nn.Module):
+class SkySenseClassifier(nn.Module):
     """
-    Thin wrapper so that the backbone lives under `self.backbone`,
-    matching your previous hook patterns: backbone.stages.X.blocks.Y...
+    Plain classifier: SwinV2 backbone + linear head.
+    No LoRA, no PEFT, just full model.
     """
-    def __init__(self, backbone: nn.Module):
+    def __init__(self, backbone: nn.Module, num_classes: int = 45):
         super().__init__()
         self.backbone = backbone
+        # For SwinV2 huge used in your code, final dim is 2816
+        self.classifier = nn.Linear(2816, num_classes)
 
     def forward(self, x):
         feats = self.backbone(x)
-        # Some Swin implementations return a tuple (features, ...)
+
+        # Some implementations return a tuple (features, ...)
         if isinstance(feats, tuple):
             feats = feats[0]
-        return feats
+
+        # [B, C, H, W] -> GAP -> [B, C]
+        if feats.ndim == 4:
+            feats = F.adaptive_avg_pool2d(feats, 1)
+            feats = feats.squeeze(-1).squeeze(-1)
+        elif feats.ndim != 2:
+            raise ValueError(f"Unexpected backbone output shape: {feats.shape}")
+
+        logits = self.classifier(feats)
+        return logits
 
 
-def build_backbone(ckpt_path: str) -> nn.Module:
+def load_swin_backbone(ckpt_path: str) -> nn.Module:
     """
-    Build a SwinTransformerV2 'huge' backbone and load weights
-    from a checkpoint. This is the SAME backbone used in SkySense,
-    but without any LoRA or classifier head.
+    Load SwinTransformerV2 'huge' backbone with pretrained weights.
+    Mirrors how you're using it elsewhere, but WITHOUT LoRA.
     """
     backbone = SwinTransformerV2(
         arch="huge",
@@ -65,17 +77,19 @@ def build_backbone(ckpt_path: str) -> nn.Module:
     )
 
     ckpt = torch.load(ckpt_path, map_location="cpu")
-    # Many training scripts save {"model": state_dict, ...}
     state_dict = ckpt.get("model", ckpt)
-    # strict=False in case checkpoint also has classifier or extra keys
     backbone.load_state_dict(state_dict, strict=False)
+    return backbone
 
-    # Wrap so we have model.backbone.* names
-    return SkySenseBackboneWrapper(backbone)
+
+def build_plain_classifier(ckpt_path: str, num_classes: int = 45) -> nn.Module:
+    backbone = load_swin_backbone(ckpt_path)
+    model = SkySenseClassifier(backbone, num_classes=num_classes)
+    return model
 
 
 # ==========================================================
-# 3. Layer matching / hooks
+# 3. Layer matching / hooks (post-activation features)
 # ==========================================================
 
 def match_layers(name: str) -> bool:
@@ -138,7 +152,7 @@ def register_hooks(model: nn.Module):
 
 
 # ==========================================================
-# 4. Utility: weight shape (optional but handy)
+# 4. Utility: weight shape (optional)
 # ==========================================================
 
 def get_weight_shape(model: nn.Module, layer_name: str):
@@ -265,21 +279,26 @@ def compute_spectrum(D: torch.Tensor):
 
 
 # ==========================================================
-# 6. Main analysis: base (pretrained) vs full finetune
+# 6. Main: train tuned model briefly, then analyze feature diff
 # ==========================================================
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--base_ckpt", required=True,
                         help="Pretrained backbone checkpoint (base model).")
-    parser.add_argument("--tuned_ckpt", required=True,
-                        help="Fully finetuned backbone checkpoint (same arch, no LoRA).")
-    parser.add_argument("--batch_size", type=int, default=64)
-    parser.add_argument("--num_batches", type=int, default=20,
-                        help="How many batches to use for feature stats.")
+    parser.add_argument("--num_classes", type=int, default=45)
     parser.add_argument("--train_split", type=float, default=0.1)
+    parser.add_argument("--batch_size", type=int, default=64)
+    parser.add_argument("--train_epochs", type=int, default=1,
+                        help="Number of epochs of full finetuning to run.")
+    parser.add_argument("--max_train_batches", type=int, default=-1,
+                        help="Optional cap on train batches per epoch (-1 = all).")
+    parser.add_argument("--analysis_batches", type=int, default=20,
+                        help="How many batches to use for feature analysis.")
+    parser.add_argument("--lr", type=float, default=1e-4)
+    parser.add_argument("--weight_decay", type=float, default=0.01)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--out", default="analysis/full_ft_feature_diff_intrinsic_dim.csv")
+    parser.add_argument("--out", default="analysis/one_epoch_full_ft_feature_diff.csv")
     args = parser.parse_args()
 
     set_seed(args.seed)
@@ -293,18 +312,71 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # ------------------------------------------------------
-    # Build base & tuned models (no LoRA, backbone only)
+    # Build base & tuned models (no LoRA)
     # ------------------------------------------------------
-    base_model = build_backbone(args.base_ckpt).to(device)
-    tuned_model = build_backbone(args.base_ckpt).to(device)
+    print("Building base (pretrained) and tuned (trainable) models...")
+    base_model = build_plain_classifier(args.base_ckpt, num_classes=args.num_classes).to(device)
+    tuned_model = build_plain_classifier(args.base_ckpt, num_classes=args.num_classes).to(device)
 
-    # Load fully finetuned weights into tuned_model
-    tuned_state = torch.load(args.tuned_ckpt, map_location=device)
-    tuned_state_dict = tuned_state.get("model", tuned_state)
-    tuned_model.load_state_dict(tuned_state_dict, strict=False)
-
+    # base_model is never updated
+    for p in base_model.parameters():
+        p.requires_grad = False
     base_model.eval()
+
+    tuned_model.train()
+    optimizer = AdamW(tuned_model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    criterion = nn.CrossEntropyLoss()
+
+    # ------------------------------------------------------
+    # Data loader for training
+    # ------------------------------------------------------
+    print("Preparing data loaders...")
+    train_loader, _ = get_resisc45_dataloaders(
+        train_split=args.train_split,
+        batch_size=args.batch_size,
+    )
+
+    # ------------------------------------------------------
+    # Brief full finetuning (few steps / one epoch)
+    # ------------------------------------------------------
+    print(f"Starting full finetuning for {args.train_epochs} epoch(s)...")
+    for epoch in range(args.train_epochs):
+        tuned_model.train()
+        total_loss = 0.0
+        num_batches = 0
+
+        for i, (x, y) in enumerate(train_loader):
+            if args.max_train_batches > 0 and i >= args.max_train_batches:
+                break
+
+            x = x.to(device)
+            y = y.to(device)
+
+            optimizer.zero_grad(set_to_none=True)
+            logits = tuned_model(x)
+            loss = criterion(logits, y)
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+            num_batches += 1
+
+        if num_batches > 0:
+            avg_loss = total_loss / num_batches
+        else:
+            avg_loss = float("nan")
+        print(f"Epoch {epoch+1}/{args.train_epochs} - avg train loss: {avg_loss:.4f}")
+
     tuned_model.eval()
+    print("Finished brief full finetuning. Starting feature-diff analysis...")
+
+    # ------------------------------------------------------
+    # Rebuild data loader for analysis (fresh iterator)
+    # ------------------------------------------------------
+    train_loader, _ = get_resisc45_dataloaders(
+        train_split=args.train_split,
+        batch_size=args.batch_size,
+    )
 
     # ------------------------------------------------------
     # Register hooks
@@ -313,19 +385,11 @@ def main():
     tuned_acts, tuned_handles = register_hooks(tuned_model)
 
     # ------------------------------------------------------
-    # Data loader
-    # ------------------------------------------------------
-    train_loader, _ = get_resisc45_dataloaders(
-        train_split=args.train_split,
-        batch_size=args.batch_size,
-    )
-
-    # ------------------------------------------------------
-    # Run a few batches through both models
+    # Run a few batches through both models for analysis
     # ------------------------------------------------------
     with torch.no_grad():
         for i, (x, y) in enumerate(train_loader):
-            if i >= args.num_batches:
+            if i >= args.analysis_batches:
                 break
             x = x.to(device)
             base_model(x)
@@ -336,7 +400,7 @@ def main():
         h.remove()
 
     # ------------------------------------------------------
-    # Per-layer analysis
+    # Per-layer analysis: base vs 1-epoch full FT tuned
     # ------------------------------------------------------
     rows = []
 
@@ -346,7 +410,7 @@ def main():
 
         # Concatenate all batches for this layer
         F_pre = torch.cat(base_acts[layer], dim=0)   # [N, C] from pretrained
-        F_post = torch.cat(tuned_acts[layer], dim=0) # [N, C] from full FT
+        F_post = torch.cat(tuned_acts[layer], dim=0) # [N, C] from briefly full-FT model
 
         # Sanity check: shapes must match
         if F_pre.shape != F_post.shape:
@@ -381,7 +445,7 @@ def main():
 
     df = pd.DataFrame(rows)
     df.to_csv(args.out, index=False)
-    print("Saved:", args.out)
+    print("Saved feature-diff intrinsic-dimension CSV to:", args.out)
 
 
 if __name__ == "__main__":
