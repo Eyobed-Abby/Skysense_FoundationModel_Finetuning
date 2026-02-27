@@ -38,7 +38,7 @@ echo
 srun python feature_diff_full_finetune_analysis.py \
   --base_ckpt skysense_model_backbone_hr.pth \
   --train_split 0.1 \
-  --batch_size 32 \
+  --batch_size 16 \
   --train_epochs 1 \
   --max_train_batches -1 \
   --analysis_batches 20 \
