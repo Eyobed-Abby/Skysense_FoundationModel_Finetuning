@@ -1,0 +1,51 @@
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcv/cnn/bricks/transformer.py:32: UserWarning: Fail to import ``MultiScaleDeformableAttention`` from ``mmcv.ops.multi_scale_deform_attn``, You should install ``mmcv-full`` if you need this module. 
+  warnings.warn('Fail to import ``MultiScaleDeformableAttention`` from '
+/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/functional.py:554: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4322.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Traceback (most recent call last):
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/feature_diff_full_finetune_analysis.py", line 452, in <module>
+    main()
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/feature_diff_full_finetune_analysis.py", line 356, in main
+    logits = tuned_model(x)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/feature_diff_full_finetune_analysis.py", line 45, in forward
+    feats = self.backbone(x)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 485, in forward
+    x, hw_shape = stage(x, hw_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 222, in forward
+    x = block(x, out_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 125, in forward
+    x = _inner_forward(x)
+  File "/dpc/kuin0137/LoRA_Experiment/classification/Updated_Vanilla/Skysense_FoundationModel_Finetuning/models/swin_transformer_v2.py", line 108, in _inner_forward
+    x = self.attn(x, hw_shape)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcls/models/utils/attention.py", line 419, in forward
+    attn_windows = self.w_msa(query_windows, mask=attn_mask)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/mmcls/models/utils/attention.py", line 262, in forward
+    F.normalize(q, dim=-1) @ F.normalize(k, dim=-1).transpose(-2, -1))
+  File "/home/kunet.ae/100066896/.local/lib/python3.9/site-packages/torch/nn/functional.py", line 5568, in normalize
+    return input / denom
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 22.00 MiB. GPU 0 has a total capacity of 31.73 GiB of which 28.19 MiB is free. Including non-PyTorch memory, this process has 31.70 GiB memory in use. Of the allocated memory 30.27 GiB is allocated by PyTorch, and 1.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+srun: error: gpu-10-2: task 0: Exited with exit code 1

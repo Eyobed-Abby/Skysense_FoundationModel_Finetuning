@@ -1,0 +1,17 @@
+=======================================
+ SKY SENSE ONE-EPOCH FULL FINETUNE FEATURE-DIFF ANALYSIS
+=======================================
+Host: gpu-10-2
+Start time: Fri Feb 27 22:41:15 +04 2026
+
+Running one-epoch full finetune + feature-diff intrinsic-dimension analysis...
+
+Building base (pretrained) and tuned (trainable) models...
+Preparing data loaders...
+Starting full finetuning for 1 epoch(s)...
+Epoch 1/1 - avg train loss: 0.8657
+Finished brief full finetuning. Starting feature-diff analysis...
+Saved feature-diff intrinsic-dimension CSV to: analysis/one_epoch_full_ft_feature_diff.csv
+
+Finish time: Fri Feb 27 22:46:11 +04 2026
+=======================================
